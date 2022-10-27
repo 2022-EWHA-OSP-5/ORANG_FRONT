@@ -1,5 +1,5 @@
-import "../styles/font.scss";
-import styled from "styled-components";
+import '../styles/font.scss';
+import styled from 'styled-components';
 
 const Test = () => {
   return <Style>Test</Style>;
