@@ -33,4 +33,30 @@ N.BookMark = styled.img`
   width: 17px;
 `;
 
-export default N;
+const B = {};
+
+B.Rectangle = styled.div`
+  height: 53px;
+  width: 100%;
+  background-color: white;
+  border-bottom: solid 1px var(--border-gray);
+
+  display: flex;
+  align-items: center;
+`;
+
+B.Back = styled.img`
+  margin-left: 17px;
+  margin-right: 16px;
+  width: 12px;
+  height: 20px;
+`;
+
+B.TopBarName = styled.p`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+`;
+export { N, B };

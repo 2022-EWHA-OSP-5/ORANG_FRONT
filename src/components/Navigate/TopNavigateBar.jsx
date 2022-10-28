@@ -1,4 +1,4 @@
-import N from './Nav.style';
+import { N } from './Nav.style';
 import BookMark from '../../assets/Navigate/BookMark.svg';
 import Logo from '../../assets/Navigate/Logo.svg';
 import Orang from '../../assets/Navigate/Orang.svg';
