@@ -1,8 +1,9 @@
 import '../styles/font.scss';
 import styled from 'styled-components';
 
+import TopNavigateBar from './Navigate/TopNavigateBar';
 const Test = () => {
-  return <Style>Test</Style>;
+  return <TopNavigateBar></TopNavigateBar>;
 };
 
 export default Test;
