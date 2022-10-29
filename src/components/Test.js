@@ -1,12 +1,11 @@
 import '../styles/font.scss';
 import styled from 'styled-components';
 
+import TopNavigateBar from './Navigate/TopNavigateBar';
+import GoBackBar from './Navigate/GoBackBar';
+
 const Test = () => {
-  return <Style>Test</Style>;
+  return <GoBackBar TopBarName="전체 메뉴" />;
 };
 
 export default Test;
-
-const Style = styled.div`
-  color: var(--main-pink);
-`;
