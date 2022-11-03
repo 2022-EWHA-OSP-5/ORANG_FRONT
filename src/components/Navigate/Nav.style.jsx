@@ -31,6 +31,7 @@ N.BookMark = styled.img`
   margin-right: 18px;
   height: 22px;
   width: 17px;
+  color: #696969;
 `;
 
 const B = {};
