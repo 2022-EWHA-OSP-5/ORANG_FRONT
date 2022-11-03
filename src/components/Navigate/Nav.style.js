@@ -59,4 +59,53 @@ B.TopBarName = styled.p`
   font-size: 20px;
   line-height: 29px;
 `;
-export { N, B };
+
+const Bottom = {};
+
+Bottom.Rectangle = styled.div`
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 70px;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.08);
+`;
+
+Bottom.Home = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+`;
+
+Bottom.Circle = styled.div`
+  width: 45px;
+  height: 45px;
+  background-color: var(--main-orange);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+`;
+
+Bottom.Person = styled.img`
+  width: 24px;
+  height: 24px;
+
+  margin-right: 20px;
+`;
+
+export { N, B, Bottom };
