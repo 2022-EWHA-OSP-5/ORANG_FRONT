@@ -1,11 +1,20 @@
 import { B } from './Nav.style';
 import Back from '../../assets/Navigate/Back.svg';
 
-const GoBackBar = ({ TopBarName }) => {
+const GoBackBar = ({ TopBarName, center }) => {
   return (
     <B.Rectangle>
-      <B.Back src={Back} />
-      <B.TopBarName>{TopBarName}</B.TopBarName>
+      {center ? (
+        <>
+          <B.Back src={Back} center />
+          <B.TopBarName center>{TopBarName}</B.TopBarName>
+        </>
+      ) : (
+        <>
+          <B.Back src={Back} />
+          <B.TopBarName>{TopBarName}</B.TopBarName>
+        </>
+      )}
     </B.Rectangle>
   );
 };

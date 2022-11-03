@@ -3,12 +3,14 @@ import './styles/font.scss';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Test from './components/Test';
+import LoginPage from './pages/Auth/LoginPage';
+import SignUpPage from './pages/Auth/SignUpPage';
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/*" element={<Test />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/signup" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );
