@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const N = {};
 
@@ -50,6 +50,14 @@ B.Back = styled.img`
   margin-right: 16px;
   width: 12px;
   height: 20px;
+
+  ${props =>
+    props.center
+      ? css`
+          position: relative;
+          float: left;
+        `
+      : css``}
 `;
 
 B.TopBarName = styled.p`
@@ -58,6 +66,14 @@ B.TopBarName = styled.p`
   font-weight: 400;
   font-size: 20px;
   line-height: 29px;
+
+  ${props =>
+    props.center
+      ? css`
+          margin: auto;
+          padding-right: 53px;
+        `
+      : css``}
 `;
 
 const Bottom = {};
