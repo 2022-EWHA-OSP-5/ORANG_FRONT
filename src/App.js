@@ -3,7 +3,7 @@ import './styles/font.scss';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Test from './components/Test';
+import MainPage from './pages/Main';
 import LoginPage from './pages/Auth/LoginPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 import DetailPage from './pages/Detail/DetailPage';
@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/*" element={<Test />} />
+        <Route exact path="/*" element={<MainPage />} />
         <Route exact path="/detail" element={<DetailPage />} />
         <Route exact path="/detail/menu" element={<DetailMenuPage />} />
         <Route exact path="/detail/review" element={<DetailReviewPage />} />
