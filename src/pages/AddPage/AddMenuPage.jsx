@@ -2,7 +2,7 @@ import { Layout } from './Add.style'
 import GoBackBar from '../../components/Navigate/GoBackBar';
 import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import MenuInput from '../../components/Input/MenuInput';
-import OrangeBtn from '../../components/Button/OrangeBtn';
+import Button from '../../components/Detail/Button';
 import styled from 'styled-components';
 
 export default function SignUpPage() {
@@ -32,7 +32,14 @@ export default function SignUpPage() {
             <Layout.HeadText>* 부정확한 정보는 무통보 삭제될 수 있습니다</Layout.HeadText>
             <Layout.Blank/>
 
-            <OrangeBtn>등록 완료</OrangeBtn>
+            <Container>
+                <Button
+              onClick={() => {}}
+              children="등록하기"
+              width="220px"
+              arrow={true}/>
+            </Container>
+            
       </Layout.Container>
       <BottomNavigateBar></BottomNavigateBar>
     </Layout.Display>
@@ -43,4 +50,10 @@ export default function SignUpPage() {
 const Star = styled.span`
 font-weight: 700;
 color: #FF0000;
+`;
+
+const Container = styled.div`
+align-item: center;
+justify-content: center;
+display: flex;
 `;

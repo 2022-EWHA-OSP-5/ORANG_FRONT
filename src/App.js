@@ -9,6 +9,9 @@ import SignUpPage from './pages/Auth/SignUpPage';
 import DetailPage from './pages/Detail/DetailPage';
 import DetailMenuPage from './pages/Detail/DetailMenuPage';
 import DetailReviewPage from './pages/Detail/DetailReviewPage';
+import AddMenuPage from './pages/AddPage/AddMenuPage';
+import AddStorePage from './pages/AddPage/AddStorePage';
+import AddReviewPage from './pages/AddPage/AddReviewPage'
 
 function App() {
   return (

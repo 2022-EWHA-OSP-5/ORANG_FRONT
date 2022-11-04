@@ -9,6 +9,7 @@ const Button = styled.div`
   width: 90px;
   height: 94px;
   float: left;
+  margin-left: 5px;
 `;
 
 export default AddBtn;
