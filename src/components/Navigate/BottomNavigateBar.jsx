@@ -6,9 +6,9 @@ const BottomNavigateBar = () => {
   return (
     <Bottom.Rectangle>
       <Bottom.Home src={Home} />
-      <Bottom.Circle>
-        <img src={Plus} />
-      </Bottom.Circle>
+
+      <Bottom.Circle src={Plus} />
+
       <Bottom.Person src={Person} />
     </Bottom.Rectangle>
   );
