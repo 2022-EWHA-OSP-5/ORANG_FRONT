@@ -11,12 +11,55 @@ Layout.TextBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 18px;
+
+  .title {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .description {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 19px;
+  }
 `;
 
 Layout.Bottom = styled.div`
   display: flex;
   align-items: center;
+
+  img {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+  }
+
+  .grade {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: justify;
+  }
+
+  .category {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: var(--orange);
+
+    margin-left: 15px;
+  }
 `;
+
 const Com = {};
 
 Com.Img = styled.img`
@@ -31,41 +74,4 @@ Com.Star = styled.img`
   margin-right: 4px;
 `;
 
-const Text = {};
-
-Text.Title = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 22px;
-`;
-
-Text.Description = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 19px;
-`;
-
-Text.Grade = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 16px;
-  text-align: justify;
-`;
-
-Text.Category = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 19px;
-  color: var(--orange);
-
-  margin-left: 15px;
-`;
-export { Layout, Com, Text };
+export { Layout, Com };

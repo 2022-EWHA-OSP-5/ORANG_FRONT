@@ -25,6 +25,47 @@ Layout.SwiperTextBox = styled.div`
 
   top: 114px;
   margin-left: 34px;
+
+  .logo {
+    width: 52px;
+    height: 18px;
+    background-color: #ff3d00;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #ffffff;
+
+    margin-bottom: 7px;
+  }
+
+  .big {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+
+  .small {
+    margin-top: 3px;
+
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 23px;
+
+    color: #ffffff;
+  }
 `;
 
 Layout.InstarSlider = styled.div`
@@ -94,47 +135,6 @@ Text.GotoFull = styled.div`
     height: 13px;
     width: 9px;
   }
-`;
-
-Text.Slider_Logo = styled.div`
-  width: 52px;
-  height: 18px;
-  background-color: #ff3d00;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: 'Noto Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #ffffff;
-
-  margin-bottom: 7px;
-`;
-
-Text.Slider_Big = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 41px;
-  color: #ffffff;
-`;
-
-Text.Slider_Small = styled.p`
-  margin-top: 3px;
-
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 16px;
-  line-height: 23px;
-
-  color: #ffffff;
 `;
 
 export { Layout, Text };
