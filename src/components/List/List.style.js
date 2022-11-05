@@ -61,10 +61,10 @@ Text.Grade = styled.p`
 Text.Category = styled.p`
   font-family: 'Noto Sans KR';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 13px;
   line-height: 19px;
-  color: #9c9c9c;
+  color: var(--orange);
 
   margin-left: 15px;
 `;
