@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default AddStorePage;
+export default App;
