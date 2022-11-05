@@ -101,27 +101,16 @@ Bottom.Home = styled.img`
   margin-left: 20px;
 `;
 
-Bottom.Circle = styled.div`
-  width: 45px;
-  height: 45px;
-  background-color: var(--main-orange);
-  border-radius: 50%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    width: 22px;
-    height: 22px;
-  }
-`;
-
 Bottom.Person = styled.img`
   width: 24px;
   height: 24px;
 
   margin-right: 20px;
+`;
+
+Bottom.Circle = styled.img`
+  height: 45px;
+  width: 45px;
 `;
 
 export { N, B, Bottom };
