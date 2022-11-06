@@ -19,9 +19,9 @@ export default function MainPage() {
 
         <Layout.SwiperTextBox>
           <p className="logo">ORANG</p>
-          <p classname="big">벗들이 추천하는</p>
-          <p classname="big">믿고 먹는 이대 맛집</p>
-          <p classname="small">선배가 여기로 오랭</p>
+          <p className="big">벗들이 추천하는</p>
+          <p className="big">믿고 먹는 이대 맛집</p>
+          <p className="small">선배가 여기로 오랭</p>
         </Layout.SwiperTextBox>
       </Layout.Swiper>
 

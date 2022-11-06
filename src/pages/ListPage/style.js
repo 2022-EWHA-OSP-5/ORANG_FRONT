@@ -6,7 +6,7 @@ Layout.Display = styled.div``;
 
 Layout.SelectBox = styled.div`
   display: flex;
-  margin: 25px 0 25px 35px;
+  margin: 25px 0 0px 35px;
 `;
 
 Layout.ListBox = styled.div`
