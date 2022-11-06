@@ -1,4 +1,4 @@
-import { Layout, Com, Text } from './List.style';
+import { Layout, Com } from './List.style';
 import Food from '../../assets/InstarCard/food1.png';
 import YellowStar from '../../assets/Star/YellowStar.svg';
 const List = ({ restaurant }) => {
@@ -7,13 +7,13 @@ const List = ({ restaurant }) => {
       <Com.Img src={Food} />
 
       <Layout.TextBox>
-        <Text.Title>{restaurant.name}</Text.Title>
-        <Text.Description>{restaurant.description}</Text.Description>
+        <p className="title">{restaurant.name}</p>
+        <p className="description">{restaurant.description}</p>
 
         <Layout.Bottom>
-          <Com.Star src={YellowStar} />
-          <Text.Grade>{restaurant.grade}</Text.Grade>
-          <Text.Category>{restaurant.category}</Text.Category>
+          <img src={YellowStar} />
+          <p className="grade">{restaurant.grade}</p>
+          <p className="category">{restaurant.category}</p>
         </Layout.Bottom>
       </Layout.TextBox>
     </Layout.Box>

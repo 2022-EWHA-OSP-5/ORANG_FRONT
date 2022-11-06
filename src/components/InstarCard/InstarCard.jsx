@@ -1,4 +1,4 @@
-import { Layout, Com, Text } from './instarcard.style';
+import { Layout, Text } from './instarcard.style';
 import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import food1 from '../../assets/InstarCard/food1.png';
 import food2 from '../../assets/InstarCard/food2.jpg';
@@ -16,24 +16,23 @@ const InstarCard = ({ profile, review, restaurant }) => {
   return (
     <Layout.Box>
       <Layout.Title>
-        <Com.Profile></Com.Profile>
-        <Text.NickName>{profile.name}</Text.NickName>
+        <div className="profile"></div>
+        <p className="nickname">{profile.name}</p>
       </Layout.Title>
 
       <Layout.ImgSection background={food2}>
         <Layout.ImgShadow />
         <Layout.ImgText>
-          <Text.Quatation src={Quotation} />
-
-          <Text.ReviewTitle>{review.title}</Text.ReviewTitle>
-          <Text.Review>{review.detail}</Text.Review>
+          <img scr={Quotation} className="quotation" />
+          <p className="review_title">{review.title}</p>
+          <p className="review">{review.detail}</p>
         </Layout.ImgText>
       </Layout.ImgSection>
 
       <Layout.Restaurant>
-        <Text.Restaurant>{restaurant.restaurant}</Text.Restaurant>
-        <Com.Star src={YellowStar} />
-        <Text.Grade>{restaurant.grade}</Text.Grade>
+        <p className="restaurant">{restaurant.restaurant}</p>
+        <img className="star" src={YellowStar} />
+        <p className="grade">{restaurant.grade}</p>
       </Layout.Restaurant>
 
       <Text.GotoDetail>바로 가기</Text.GotoDetail>

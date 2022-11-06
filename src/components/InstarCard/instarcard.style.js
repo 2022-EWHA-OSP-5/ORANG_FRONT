@@ -20,8 +20,24 @@ Layout.Title = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
-
   margin-left: 16px;
+
+  .profile {
+    width: 31px;
+    height: 31px;
+
+    background: #d9d9d9;
+    border-radius: 17px;
+    margin-right: 9px;
+  }
+
+  .nickname {
+    font-family: var(--font-basic);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+  }
 `;
 
 Layout.ImgSection = styled.div`
@@ -47,62 +63,69 @@ Layout.ImgShadow = styled.div`
 `;
 Layout.Restaurant = styled.div`
   width: 100%;
-
   margin: 14px 0 0 16px;
   display: flex;
   align-items: center;
+
+  .star {
+    width: 15px;
+    height: 15px;
+    margin: 0 2px 0 5px;
+  }
+
+  .grade {
+    font-family: var(--font-basic);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .restaurant {
+    font-family: var(--font-basic);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+  }
 `;
 
 Layout.ImgText = styled.div`
   position: absolute;
   width: 171px;
   height: 148px;
-
   top: 47px;
   left: 15px;
+
+  .quotaion {
+    height: 15px;
+    width: 25px;
+  }
+
+  .review_title {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    color: #ffffff;
+  }
+
+  .review {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: lighter;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #ffffff;
+
+    margin-top: 14px;
+  }
 `;
 
-const Com = {};
-
-Com.Profile = styled.div`
-  width: 31px;
-  height: 31px;
-
-  background: #d9d9d9;
-  border-radius: 17px;
-  margin-right: 9px;
-`;
-
-Com.Star = styled.img`
-  width: 15px;
-  height: 15px;
-  margin: 0 2px 0 5px;
-`;
 const Text = {};
-
-Text.NickName = styled.p`
-  font-family: var(--font-basic);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 17px;
-`;
-
-Text.Restaurant = styled.p`
-  font-family: var(--font-basic);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
-`;
-
-Text.Grade = styled.p`
-  font-family: var(--font-basic);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 16px;
-`;
 
 Text.GotoDetail = styled.p`
   font-family: var(--font-basic);
@@ -114,30 +137,4 @@ Text.GotoDetail = styled.p`
   margin-left: 16px;
 `;
 
-Text.ReviewTitle = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 29px;
-  color: #ffffff;
-`;
-
-Text.Quatation = styled.img`
-  height: 15px;
-  width: 25px;
-`;
-
-Text.Review = styled.p`
-  font-family: 'Noto Sans KR';
-  font-style: normal;
-  font-weight: lighter;
-
-  font-size: 14px;
-  line-height: 20px;
-
-  color: #ffffff;
-
-  margin-top: 14px;
-`;
-export { Layout, Com, Text };
+export { Layout, Text };

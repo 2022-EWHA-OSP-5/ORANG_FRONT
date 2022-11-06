@@ -18,10 +18,10 @@ export default function MainPage() {
         <CustomSwiper></CustomSwiper>
 
         <Layout.SwiperTextBox>
-          <Text.Slider_Logo>ORANG</Text.Slider_Logo>
-          <Text.Slider_Big>벗들이 추천하는</Text.Slider_Big>
-          <Text.Slider_Big>믿고 먹는 이대 맛집</Text.Slider_Big>
-          <Text.Slider_Small>선배가 여기로 오랭</Text.Slider_Small>
+          <p className="logo">ORANG</p>
+          <p className="big">벗들이 추천하는</p>
+          <p className="big">믿고 먹는 이대 맛집</p>
+          <p className="small">선배가 여기로 오랭</p>
         </Layout.SwiperTextBox>
       </Layout.Swiper>
 

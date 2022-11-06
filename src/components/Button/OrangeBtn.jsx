@@ -1,4 +1,3 @@
-import { Children } from 'react';
 import styled from 'styled-components';
 
 const OrangeBtn = ({ children }) => {
@@ -8,7 +7,7 @@ const OrangeBtn = ({ children }) => {
 const Button = styled.div`
   margin: 0 46px;
   height: 41px;
-  background-color: var(--main-orange);
+  background-color: var(--orange);
   border-radius: 20px;
   display: flex;
   justify-content: center;
