@@ -97,7 +97,7 @@ Layout.Detail = styled.div`
 
 Layout.Review = styled.p`
   margin: 12px 22px;
-  color: red;
+
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
