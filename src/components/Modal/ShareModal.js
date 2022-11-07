@@ -1,18 +1,13 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Button from '../Detail/Button';
+import kakaologo from '../../assets/Detail/ShareLogo/KakaoLogo.svg';
+import instagramlogo from '../../assets/Detail/ShareLogo/InstagramLogo.svg';
+import twitterlogo from '../../assets/Detail/ShareLogo/TwitterLogo.svg';
+import facebooklogo from '../../assets/Detail/ShareLogo/FacebookLogo.svg';
+import urlcopylogo from '../../assets/Detail/ShareLogo/URLCopyLogo.svg';
 
-const Modal = props => {
-  const {
-    open,
-    close,
-    subtext,
-    maintext,
-    button1text,
-    button2text,
-    onClick1,
-    onClick2,
-  } = props;
+const ShareModal = props => {
+  const { open, close } = props;
   useEffect(() => {
     document.body.style.cssText = `
           position: fixed;
@@ -33,23 +28,18 @@ const Modal = props => {
           <Background onClick={close} />
           <ModalBlock>
             <Contents>
-              <div>
+              <div className="inner">
                 <TextWrapper>
-                  <SubText>{subtext}</SubText>
-                  <MainText>{maintext}</MainText>
+                  <SubText>맛집 정보를 공유합니다.</SubText>
+                  <MainText>공유 방법을 선택해주세요.</MainText>
                 </TextWrapper>
-                <ButtonWrapper>
-                  <Button
-                    onClick={onClick1}
-                    children={button1text}
-                    width="180px"
-                  />
-                  <Button
-                    onClick={onClick2}
-                    children={button2text}
-                    width="180px"
-                  />
-                </ButtonWrapper>
+                <ImgWrapper>
+                  <Img src={kakaologo} />
+                  <Img src={instagramlogo} />
+                  <Img src={twitterlogo} />
+                  <Img src={facebooklogo} />
+                  <Img src={urlcopylogo} />
+                </ImgWrapper>
               </div>
             </Contents>
           </ModalBlock>
@@ -59,7 +49,7 @@ const Modal = props => {
   );
 };
 
-export default Modal;
+export default ShareModal;
 
 const Container = styled.div`
   position: fixed;
@@ -117,6 +107,13 @@ const Contents = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  .inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -140,12 +137,18 @@ const MainText = styled.p`
   font-size: 17px;
 `;
 
-const ButtonWrapper = styled.div`
+const ImgWrapper = styled.div`
+  width: 90%;
+  height: 80px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  margin: 10px 0 30px 0;
-  div {
-    margin-top: 10px;
-  }
+  margin-bottom: 15px;
+`;
+
+const Img = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.25));
 `;

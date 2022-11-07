@@ -6,6 +6,7 @@ import { BM } from './Detail.style';
 import Button from './Button';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
+import ShareModal from '../Modal/ShareModal';
 
 const BottomMenu = () => {
   const [RModal, isRModal] = useState(false);
@@ -15,18 +16,22 @@ const BottomMenu = () => {
   const closeRModal = () => {
     isRModal(false);
   };
+  const [SModal, isSModal] = useState(false);
+  const openSModal = () => {
+    isSModal(true);
+  };
+  const closeSModal = () => {
+    isSModal(false);
+  };
   return (
     <>
       <BM.Rectangle>
         <BM.Home src={Home} />
         <BM.BookMark src={BookMark} />
-        <BM.Share src={Share} />
+        <BM.Share src={Share} onClick={() => openSModal()} />
         <BM.MyPage src={MyPage} />
         <Button
-          onClick={() => {
-            console.log('버튼 클릭');
-            openRModal();
-          }}
+          onClick={() => openRModal()}
           children="예약하기"
           width="160px"
           arrow={false}
@@ -36,7 +41,7 @@ const BottomMenu = () => {
         <Modal
           open={RModal}
           close={closeRModal}
-          subtext="맛집 반서울 예약을 진행합니다."
+          subtext="맛집 예약을 진행합니다."
           maintext="예약 방법을 선택해주세요."
           button1text="사이트로 예약하기"
           button2text="전화로 예약하기"
@@ -48,6 +53,7 @@ const BottomMenu = () => {
           }}
         />
       ) : null}
+      {SModal ? <ShareModal open={SModal} close={closeSModal} /> : null}
     </>
   );
 };
