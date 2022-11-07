@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import GoBackBar from '../../components/Navigate/GoBackBar';
+import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import Review from '../../components/Detail/Review';
 import reviewimg1 from '../../assets/Detail/ReviewImg1.svg';
 import reviewimg2 from '../../assets/Detail/ReviewImg2.svg';
@@ -55,6 +56,7 @@ const DetailReviewPage = () => {
         </Container>
         <Blank />
       </Wrapper>
+      <BottomNavigateBar />
     </>
   );
 };

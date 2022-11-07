@@ -25,6 +25,8 @@ const ButtonContainer = styled.div`
 
 const ButtonText = styled.p`
   color: var(--orange);
+  font-family: 'Noto Sans KR';
+  font-style: normal;
   font-size: 15px;
   font-weight: 500;
 `;

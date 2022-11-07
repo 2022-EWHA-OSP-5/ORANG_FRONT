@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import GoBackBar from '../../components/Navigate/GoBackBar';
+import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import styled from 'styled-components';
 import menuimg from '../../assets/Detail/MenuImg.svg';
 import { M } from '../../components/Detail/Detail.style';
@@ -92,6 +93,7 @@ const DetailMenuPage = () => {
           <Blank />
         </Container>
       </Wrapper>
+      <BottomNavigateBar />
     </>
   );
 };
