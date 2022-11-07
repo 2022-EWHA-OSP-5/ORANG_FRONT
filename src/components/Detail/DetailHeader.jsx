@@ -1,12 +1,14 @@
 import { H } from './Detail.style';
 import map from '../../assets/Detail/Map.svg';
+import { useNavigate } from 'react-router-dom';
 
 const DetailHeader = () => {
+  const Nav = useNavigate();
   return (
     <>
       <H.HeaderWrapper>
         <H.MapButton>
-          <H.Map src={map} />
+          <H.Map src={map} onClick={() => Nav('/detail/map')} />
         </H.MapButton>
         <H.TextContainer>
           <div style={{ display: 'flex' }}>
