@@ -28,7 +28,7 @@ const DetailReview = () => {
     <>
       <R.Top>
         <R.TopText>이 맛집에 다녀오셨다면?</R.TopText>
-        <R.ButtonContainer onClick={() => Nav('/detail')}>
+        <R.ButtonContainer onClick={() => Nav('/detail/write')}>
           <R.Write src={write} />
           <R.ButtonText>리뷰 작성하기</R.ButtonText>
         </R.ButtonContainer>

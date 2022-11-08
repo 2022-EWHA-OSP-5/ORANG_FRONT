@@ -64,6 +64,13 @@ export default function MyPage() {
 
       {activeBtn[0].active === true ? (
         <div>
+          <Com.Num>전체 31개</Com.Num>
+          {data.map(res => {
+            return <List restaurant={res} />;
+          })}
+        </div>
+      ) : (
+        <div>
           <Com.Num>전체 15개</Com.Num>
           <Layout.Title>
             <p className="title">반서울</p>
@@ -86,13 +93,6 @@ export default function MyPage() {
           <Com.gotoDetail>
             <p>본문보기</p>
           </Com.gotoDetail>
-        </div>
-      ) : (
-        <div>
-          <Com.Num>전체 31개</Com.Num>
-          {data.map(res => {
-            return <List restaurant={res} />;
-          })}
         </div>
       )}
 

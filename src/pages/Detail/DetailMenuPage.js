@@ -84,7 +84,7 @@ const DetailMenuPage = () => {
             </Text1>
             <Text2>(메뉴 정보 마지막 업데이트 : {update})</Text2>
             <Button
-              onClick={() => Nav('/')}
+              onClick={() => Nav('/add/menu')}
               children="추천 메뉴 추가하기"
               width="220px"
               arrow={true}
