@@ -3,43 +3,26 @@ import { React, useState, useEffect } from 'react';
 
 const ParkingBtn = () => {
     const [isBtn, setIsBtn] = useState({
-        free: true,
-        pricy: false,
+        exist: true,
         none: false,
       });
-      const BtnString = ['무료', '유료', '불가'];
+      const BtnString = ['가능', '불가능'];
 
       return(
         <Container>
             <Button style={{
-              background: isBtn.free ? '#FF3D00' : 'white',
+              background: isBtn.exist ? '#FF3D00' : 'white',
             }}
                     onClick={() => {
-                        setIsBtn({ free: true, pricy: false, none: false })
+                        setIsBtn({ exist: true, none: false })
                         }}
                 >
                     <p
                     style={{
-                        color: isBtn.free ? 'white' : '#FF3D00',
+                        color: isBtn.exist ? 'white' : '#FF3D00',
                     }}
                     >
-                    무료
-                    </p>
-                </Button>
-                <Button style={{
-              background: isBtn.pricy ? '#FF3D00' : 'white',
-            }}
-
-                    onClick={() => {
-                        setIsBtn({ free: false, pricy: true, none: false })
-                        }}
-                >
-                    <p
-                    style={{
-                        color: isBtn.pricy ? 'white' : '#FF3D00',
-                    }}
-                    >
-                    유료
+                    가능
                     </p>
                 </Button>
                 <Button style={{
@@ -47,7 +30,7 @@ const ParkingBtn = () => {
             }}
 
                     onClick={() => {
-                        setIsBtn({ free: false, pricy: false, none: true })
+                        setIsBtn({ exist: false, none: true })
                         }}
                 >
                     <p
@@ -55,7 +38,7 @@ const ParkingBtn = () => {
                         color: isBtn.none ? 'white' : '#FF3D00',
                     }}
                     >
-                    불가
+                    불가능
                     </p>
                 </Button>
             </Container>
