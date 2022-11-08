@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { React, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DetailHeader from '../../components/Detail/DetailHeader';
 import DetailInfo from '../../components/Detail/DetailInfo';
 import DetailMenu from '../../components/Detail/DetailMenu';
@@ -9,6 +10,7 @@ import mainimg from '../../assets/Detail/DetailMainImg.svg';
 import back from '../../assets/Navigate/Back.svg';
 
 const DetailPage = () => {
+  const Nav = useNavigate();
   const [isTab, setIsTab] = useState({
     info: true,
     menu: false,
@@ -21,7 +23,7 @@ const DetailPage = () => {
         <MainImage>
           <MainImg src={'' === '' ? mainimg : null} />
         </MainImage>
-        <BackButton>
+        <BackButton onClick={() => Nav('/list')}>
           <Back src={back} />
         </BackButton>
         <DetailHeader />

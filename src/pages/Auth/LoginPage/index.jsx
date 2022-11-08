@@ -20,7 +20,7 @@ export default function LoginPage() {
       <OrangeBtn>로그인</OrangeBtn>
 
       <Com.Text>
-        회원이 아니신가요? <span>SING UP</span>
+        회원이 아니신가요? <span>SIGN UP</span>
       </Com.Text>
     </Layout.Display>
   );
