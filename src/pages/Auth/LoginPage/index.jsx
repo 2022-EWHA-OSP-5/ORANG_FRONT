@@ -10,7 +10,14 @@ export default function LoginPage() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
+  const test = { id: 4 }; // 유저 임시 데이터
+
   const Login = () => {
+    localStorage.setItem('user', JSON.stringify(test)); // 로컬스토리지에 저장
+    var getUserdata = JSON.parse(localStorage.getItem('user')); // 로컬스토리지에서 다시 빼내기
+
+    console.log(getUserdata);
+
     axios
       .post('http~', {
         username: id,
@@ -18,8 +25,6 @@ export default function LoginPage() {
       })
       .then(res => {
         console.log(res.message);
-        var userData = res.data;
-        localStorage.setItem('user', userData);
       })
       .catch(err => console.log(err));
   };
