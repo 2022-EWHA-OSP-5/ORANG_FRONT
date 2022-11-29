@@ -8,6 +8,8 @@ import Check from '../../../assets/Auth/Check.svg';
 import GreenCheck from '../../../assets/Auth/GreenCheck.svg';
 import Info from '../../../assets/Auth/Info.svg';
 
+import OneBtnModal from '../../../components/Modal/OneBtnModal';
+
 export default function SignUpPage() {
   return (
     <Layout.Display>
@@ -33,6 +35,8 @@ export default function SignUpPage() {
           <img src={Info} id="mini" />
         </Layout.Input_Logo>
       </Layout.InputBox>
+
+      <OneBtnModal />
 
       <OrangeBtn>회원가입</OrangeBtn>
     </Layout.Display>
