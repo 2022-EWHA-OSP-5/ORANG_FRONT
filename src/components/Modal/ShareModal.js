@@ -35,10 +35,12 @@ const ShareModal = props => {
                 </TextWrapper>
                 <ImgWrapper>
                   <Img src={kakaologo} />
-                  <Img src={instagramlogo} />
                   <Img src={twitterlogo} />
                   <Img src={facebooklogo} />
-                  <Img src={urlcopylogo} />
+                  <Img
+                    src={urlcopylogo}
+                    onClick={() => console.log('현재 path 복사')}
+                  />
                 </ImgWrapper>
               </div>
             </Contents>
@@ -138,7 +140,7 @@ const MainText = styled.p`
 `;
 
 const ImgWrapper = styled.div`
-  width: 90%;
+  width: 80%;
   height: 80px;
   display: flex;
   justify-content: space-around;
