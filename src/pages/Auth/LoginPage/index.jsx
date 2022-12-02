@@ -4,27 +4,31 @@ import Title_Logo from '../../../assets/Logo/Title_Logo.svg';
 import AuthInput from '../../../components/Input/AuthInput';
 import OrangeBtn from '../../../components/Button/OrangeBtn';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
-  const test = { id: 4 }; // 유저 임시 데이터
-
   const Login = () => {
-    localStorage.setItem('user', JSON.stringify(test)); // 로컬스토리지에 저장
-    var getUserdata = JSON.parse(localStorage.getItem('user')); // 로컬스토리지에서 다시 빼내기
-
-    console.log(getUserdata);
-
     axios
-      .post('http~', {
+      .post('http://127.0.0.1:5000/login', {
         username: id,
         password: password,
       })
       .then(res => {
-        console.log(res.message);
+        console.log(res);
+
+        var userInfo = res.data.data;
+        localStorage.setItem('id', JSON.stringify(userInfo.id));
+        localStorage.setItem('username', JSON.stringify(userInfo.username));
+
+        var currentUserInfo = JSON.parse(localStorage.getItem('id'));
+
+        navigate('/');
       })
       .catch(err => console.log(err));
   };
