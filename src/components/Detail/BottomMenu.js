@@ -7,8 +7,10 @@ import Button from './Button';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import ShareModal from '../Modal/ShareModal';
+import { useNavigate } from 'react-router-dom';
 
 const BottomMenu = () => {
+  const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
   const openRModal = () => {
     isRModal(true);
@@ -26,10 +28,13 @@ const BottomMenu = () => {
   return (
     <>
       <BM.Rectangle>
-        <BM.Home src={Home} />
-        <BM.BookMark src={BookMark} />
+        <BM.Home src={Home} onClick={() => Nav('/')} />
+        <BM.BookMark
+          src={BookMark}
+          onClick={() => console.log('좋아요 설정/해제 함수 넣기')}
+        />
         <BM.Share src={Share} onClick={() => openSModal()} />
-        <BM.MyPage src={MyPage} />
+        <BM.MyPage src={MyPage} onClick={() => Nav('/mypage')} />
         <Button
           onClick={() => openRModal()}
           children="예약하기"
