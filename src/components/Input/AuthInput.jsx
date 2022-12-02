@@ -2,7 +2,7 @@ import { Input } from './Input.style';
 import Id from '../../assets/Auth/Id.svg';
 import Password from '../../assets/Auth/Password.svg';
 import Key from '../../assets/Auth/Key.svg';
-const AuthInput = ({ InputType }) => {
+const AuthInput = ({ InputType, onChange }) => {
   const InputTypes = [
     { id: 1, logo: Id, text: '아이디' },
     { id: 2, logo: Password, text: '비밀번호' },
@@ -17,7 +17,7 @@ const AuthInput = ({ InputType }) => {
           return (
             <>
               <Input.Logo src={type.logo} />
-              <Input.text placeholder={type.text} />
+              <Input.text placeholder={type.text} onChange={onChange} />
             </>
           );
         }
