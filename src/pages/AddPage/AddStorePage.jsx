@@ -2,7 +2,7 @@ import { Layout } from './Add.style'
 import GoBackBar from '../../components/Navigate/GoBackBar';
 import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import StoreInput from '../../components/Input/StoreInput';
-import Button from '../../components/Detail/Button';
+import OrangeBtn from '../../components/Button/OrangeBtn';
 import styled from 'styled-components';
 
 export default function SignUpPage() {
@@ -59,22 +59,16 @@ export default function SignUpPage() {
             </Layout.InputBox>
             <Layout.Blank2/>
             <Layout.Blank2/>
-            <Text>메뉴 등록하기</Text>
-            <Button
-              onClick={() => {}}
-              children="세부 메뉴 등록하기"
-              width="220px"
-              arrow={true}
-            />
-            <Layout.Blank/>
-
             <Layout.HeadText><Star>* </Star>은 필수 입력 항목입니다.</Layout.HeadText>
             <Layout.HeadText>* 부정확한 정보는 무통보 삭제될 수 있습니다</Layout.HeadText>
             <Layout.Blank/>
 
+            <OrangeBtn>맛집 등록하기</OrangeBtn>
+            <Layout.Blank2/>
       </Layout.Container>
       <Layout.Blank/>
       <Layout.Blank/>
+
       <BottomNavigateBar></BottomNavigateBar>
     </Layout.Display>
     
