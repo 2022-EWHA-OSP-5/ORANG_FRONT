@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { React, useState, useEffect } from 'react';
-import Star from '../../assets/AddBtn/Star_empty.svg';
+import { ReactComponent as Star} from '../../assets/AddBtn/Star.svg';
 
 const FiveStarReview = () => {
     const [isBtn, setIsBtn] = useState({
@@ -14,39 +14,39 @@ const FiveStarReview = () => {
       return(
         <Container>
             <Button onClick={() => {setIsBtn({ one: true, two: false, three: false, four: false, five: false,})}}>
-            <img src = {Star} style={{
+            <Star style={{
               fill: isBtn.one ? '#FAB93B' : 'white',
               stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </img></Button>
+                </Star></Button>
 
             <Button onClick={() => {setIsBtn({ one: true, two: true, three: false, four: false, five: false,})}}>
-            <img src = {Star} style={{
-              fill: isBtn.one ? '#FAB93B' : 'white',
-              stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
+            <Star style={{
+              fill: isBtn.two ? '#FAB93B' : 'white',
+              stroke: isBtn.two ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </img></Button>
+                </Star></Button>
 
             <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: false, five: false,})}}>
-            <img src = {Star} style={{
-              fill: isBtn.one ? '#FAB93B' : 'white',
-              stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
+            <Star style={{
+              fill: isBtn.three ? '#FAB93B' : 'white',
+              stroke: isBtn.three ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </img></Button>
+                </Star></Button>
 
             <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: false,})}}>
-            <img src = {Star} style={{
-              fill: isBtn.one ? '#FAB93B' : 'white',
-              stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
+            <Star style={{
+              fill: isBtn.four ? '#FAB93B' : 'white',
+              stroke: isBtn.four ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </img></Button>
+                </Star></Button>
             
             <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: true,})}}>
-            <img src = {Star} style={{
-              fill: isBtn.one ? '#FAB93B' : 'white',
-              stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
+            <Star style={{
+              fill: isBtn.five ? '#FAB93B' : 'white',
+              stroke: isBtn.five ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </img></Button>
+                </Star></Button>
             
             </Container>
 )}
