@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const GrayBtn = ({ children }) => {
-  return <Button>{children}</Button>;
+const GrayBtn = ({ children, onClick }) => {
+  return <Button onClick={onClick}>{children}</Button>;
 };
 
 const Button = styled.div`
