@@ -27,7 +27,7 @@ Layout.HeadText = styled.div`
   color: var(--dark-gray);
   font-weight: 500;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   clear: both;
 `;
 
