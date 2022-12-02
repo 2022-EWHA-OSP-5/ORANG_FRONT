@@ -15,15 +15,17 @@ import AddStorePage from './pages/AddPage/AddStorePage';
 import AddReviewPage from './pages/AddPage/AddReviewPage';
 import ListPage from './pages/ListPage';
 import MyPage from './pages/MyPage';
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/*" element={<MainPage />} />
-        <Route exact path="/list" element={<ListPage />} />
-        <Route exact path="/mypage" element={<MyPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/signup" element={<SignUpPage />} />
+        <Route exact path="/list" element={<ListPage />} />
+        <Route exact path="/mypage" element={<MyPage />} />
+
         <Route exact path="/detail" element={<DetailPage />} />
         <Route exact path="/detail/menu" element={<DetailMenuPage />} />
         <Route exact path="/detail/review" element={<DetailReviewPage />} />
