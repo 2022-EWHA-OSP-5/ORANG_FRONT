@@ -13,7 +13,19 @@ import List from '../../components/List/List';
 
 import data from './data.js';
 
+import { useNavigate } from 'react-router-dom';
 export default function MyPage() {
+  const navigate = useNavigate();
+
+  var userName = JSON.parse(localStorage.getItem('username'));
+  console.log(userName);
+
+  const LogOut = () => {
+    window.localStorage.clear();
+    alert('로그아웃 하시겠습니까?');
+    navigate('/');
+  };
+
   const [activeBtn, setActiveBtn] = useState([
     { id: 1, name: '저장한 맛집', active: true },
     { id: 2, name: '내가 쓴 리뷰', active: false },
@@ -35,10 +47,10 @@ export default function MyPage() {
 
       <Layout.Profile>
         <img src={Profil} className="profile" />
-        <p className="username">aasfsd 님</p>
+        <p className="username">{userName} 님</p>
       </Layout.Profile>
 
-      <GrayBtn>로그아웃</GrayBtn>
+      <GrayBtn onClick={() => LogOut()}>로그아웃</GrayBtn>
 
       <Com.Hr />
 
