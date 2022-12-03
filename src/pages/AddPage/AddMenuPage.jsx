@@ -6,8 +6,12 @@ import Button from '../../components/Detail/Button';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUpPage() {
+
+  const navigate = useNavigate();
+
   var Formdata = require('form-data');
   const data = new Formdata();
 
@@ -26,25 +30,26 @@ export default function SignUpPage() {
       data.append('name', name);
       data.append('price', price);
       data.append('image', uploadFile);
-/*
+
       axios
-        .post('http://127.0.0.1:5000/restaurants/...', data, {
+        .post('http://127.0.0.1:5000/restaurants/1/menus', data, {
           headers: {
             'Content-Type' : 'multipart/form-data',
           },
         })
-        .them(res => console.log(res))
+        .then(res => {
+          console.log(res);
+  
+          navigate('/detail');
+        })
         .catch(err => console.log(err));
-        
-        !!!!!!!<int:pk>을 어디서 받아오는지...
-*/
     }
     };
 
 
   return (
     <Layout.Display>
-        <GoBackBar TopBarName="메뉴 등록하기" />
+        <GoBackBar TopBarName="메뉴 등록하기" path="/detail" onClick={() => {}}/>
         <Layout.Container>
             <Layout.Blank2/>
             <Layout.HeadText>'소녀방앗간'에서의 식사는 만족스러우셨나요?</Layout.HeadText>
@@ -81,6 +86,9 @@ export default function SignUpPage() {
               width="220px"
               arrow={true}/>
             </Container>
+            <Layout.Blank/>
+            <Layout.Blank/>
+            <Layout.Blank/>
             
       </Layout.Container>
       <BottomNavigateBar></BottomNavigateBar>

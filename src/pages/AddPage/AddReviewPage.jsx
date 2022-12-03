@@ -7,8 +7,11 @@ import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
 import { React, useState } from 'react';
 import { ReactComponent as Star} from '../../assets/AddBtn/Star.svg';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddReviewPage() {
+
+  const navigate = useNavigate();
 
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));
   
@@ -29,12 +32,6 @@ export default function AddReviewPage() {
 
 
   const UploadReview = () => {
-
-    if(isBtn.five==true){setscore(5)}
-      else if(isBtn.four==true){setscore(4)}
-      else if(isBtn.three==true){setscore(3)}
-      else if(isBtn.two==true){setscore(2)}
-      else {setscore(1)}
       
     if (score == 0){
       alert("별점을 남겨주세요.");
@@ -52,7 +49,11 @@ export default function AddReviewPage() {
             'Content-Type' : 'multipart/form-data',
           },
         })
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+  
+          navigate('/detail/review');
+        })
         .catch(err => console.log(err));
     }
     };
@@ -61,41 +62,41 @@ export default function AddReviewPage() {
 
     return (
       <Layout.Display>
-          <GoBackBar TopBarName="" />
+          <GoBackBar TopBarName="" path="/detail" onClick={() => {}}/>
           <Layout.Blank/>
           <Layout.Container>
                 <H2>반서울</H2>
                 <Layout.Blank2/>
                 <Layout.Container2>
-            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: false, three: false, four: false, five: false,})}}>
+            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: false, three: false, four: false, five: false,}); setscore(1)}}>
             <Star style={{
               fill: isBtn.one ? '#FAB93B' : 'white',
               stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
             }}>
                 </Star></Layout.Button2>
 
-            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: false, four: false, five: false,})}}>
+            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: false, four: false, five: false,}); setscore(2)}}>
             <Star style={{
               fill: isBtn.two ? '#FAB93B' : 'white',
               stroke: isBtn.two ? '#FAB93B' : 'var(--dark-gray)',
             }}>
                 </Star></Layout.Button2>
 
-            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: false, five: false,})}}>
+            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: false, five: false,}); setscore(3)}}>
             <Star style={{
               fill: isBtn.three ? '#FAB93B' : 'white',
               stroke: isBtn.three ? '#FAB93B' : 'var(--dark-gray)',
             }}>
                 </Star></Layout.Button2>
 
-            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: false,})}}>
+            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: false,}); setscore(4)}}>
             <Star style={{
               fill: isBtn.four ? '#FAB93B' : 'white',
               stroke: isBtn.four ? '#FAB93B' : 'var(--dark-gray)',
             }}>
                 </Star></Layout.Button2>
             
-            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: true,})}}>
+            <Layout.Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: true,}); setscore(5)}}>
             <Star style={{
               fill: isBtn.five ? '#FAB93B' : 'white',
               stroke: isBtn.five ? '#FAB93B' : 'var(--dark-gray)',

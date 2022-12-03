@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddStorePage() {
 
+  const navigate = useNavigate();
+
   var Formdata = require('form-data');
   const data = new Formdata();
 
@@ -31,11 +33,6 @@ export default function AddStorePage() {
 
 
   const UploadStore = () => {
-    
-    if(isBtn.ewhastation==true){setlocation('이대역');}
-    else if (isBtn.back==true){setlocation('후문');}
-    else if (isBtn.sinchonstation==true){setlocation('신촌기차역');}
-    else {setlocation('정문');}
 
     if (name == ''){
       alert("식당이름을 입력해주세요.");
@@ -62,7 +59,14 @@ export default function AddStorePage() {
             'Content-Type' : 'multipart/form-data',
           },
         })
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+  
+          var StoreInfo = res.data.data;
+          localStorage.setItem('store_id', JSON.stringify(StoreInfo.id));
+  
+          navigate('/add/menu');
+        })
         .catch(err => console.log(err));
 
     }
@@ -73,7 +77,7 @@ export default function AddStorePage() {
 
   return (
     <Layout.Display>
-        <GoBackBar TopBarName="맛집 등록하기" />
+        <GoBackBar TopBarName="맛집 등록하기" path="/list" onClick={() => {}}/>
         <Layout.Container>
           <Layout.Blank2/>
             <Layout.HeadText><Star>숨겨진 맛집</Star>을 등록해 벗들에게 공유해주세요!</Layout.HeadText>
@@ -87,19 +91,19 @@ export default function AddStorePage() {
                 <StoreInput InputType="위치"/>
                 <Layout.Container3>
                <Layout.Button3 style={{background: isBtn.front ? '#FF3D00' : 'white',}}
-                    onClick={() => {setIsBtn({ front: true, back: false, sinchonstation: false, ewhastation: false })}}>
+                    onClick={() => {setIsBtn({ front: true, back: false, sinchonstation: false, ewhastation: false }); setlocation('정문')}}>
                     <p style={{color: isBtn.front ? 'white' : '#FF3D00',}}>정문</p> </Layout.Button3>
 
                 <Layout.Button3 style={{background: isBtn.back ? '#FF3D00' : 'white',}}
-                    onClick={() => {setIsBtn({ front: false, back: true, sinchonstation: false, ewhastation: false })}}>
+                    onClick={() => {setIsBtn({ front: false, back: true, sinchonstation: false, ewhastation: false }); setlocation('후문')}}>
                     <p style={{color: isBtn.back ? 'white' : '#FF3D00',}}>후문</p></Layout.Button3>
 
                 <Layout.Button3 style={{ background: isBtn.sinchonstation ? '#FF3D00' : 'white',}}
-                    onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: true, ewhastation: false })}}>
+                    onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: true, ewhastation: false }); setlocation('신촌기차역')}}>
                     <p style={{color: isBtn.sinchonstation ? 'white' : '#FF3D00', }}>신촌기차역</p></Layout.Button3>
 
                 <Layout.Button3 style={{background: isBtn.ewhastation ? '#FF3D00' : 'white',}}
-                    onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: false, ewhastation: true })}}>
+                    onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: false, ewhastation: true }); setlocation('이대역')}}>
                     <p style={{color: isBtn.ewhastation ? 'white' : '#FF3D00',}}>이대역</p></Layout.Button3>
                     
              </Layout.Container3>
