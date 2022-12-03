@@ -1,8 +1,8 @@
 import { Input } from './Input.style';
 import styled from 'styled-components';
-import AddBtn from '../Button/AddBtn';
+import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
 
-const MenuInput = ({ InputType }) => {
+const MenuInput = ({ InputType, onChange }) => {
   const InputTypes = [
     { id: 10, name: '메뉴 이름' },
     { id: 20, name: '가격' },
@@ -17,7 +17,8 @@ const MenuInput = ({ InputType }) => {
             return (
               <>
               <Box><Text>{type.name}</Text></Box>
-              <AddBtn></AddBtn>
+              <label for="file-upload"><img src={RedAddBtn}></img></label>
+              <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} onChange={onChange}/>
               
               </>
             );
@@ -26,7 +27,7 @@ const MenuInput = ({ InputType }) => {
             return (
             <>
             <Box><Text>{type.name}</Text><Star>*</Star></Box>
-            <Input.Rectangle></Input.Rectangle>
+            <Input.Rectangle><Input.text onChange={onChange} /></Input.Rectangle>
             </>
           );
           }

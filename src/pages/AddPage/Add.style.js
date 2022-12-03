@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Layout = {};
 
@@ -23,6 +23,35 @@ Layout.Container = styled.div`
   margin: 20px 40px;
 `;
 
+Layout.Container2 = styled.div`
+  width: 100%;
+  display: flex;
+justify-content:center; 
+align-items : center;
+`;
+
+Layout.Container3 = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+`;
+
+Layout.Button3 = styled.button`
+width: 90px;
+height: 35px;
+margin: 3px;
+border: solid #FF3D00;
+border-width: 1px;
+border-radius: 18px;
+font-size: 14px;
+`;
+
+
+Layout.Button2 = styled.div`
+padding: 5px;
+`;
+
 Layout.HeadText = styled.div`
   color: var(--dark-gray);
   font-weight: 500;
@@ -39,6 +68,45 @@ Layout.Blank = styled.div`
 Layout.Blank2 = styled.div`
   height: 10px;
   clear:both;
+`;
+
+Layout.text = styled.input`
+  background: transparent;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  width: 90%;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+
+  color: rgba(99, 99, 99, 0.8);
+
+  margin-left: 20px;
+`;
+
+Layout.Rectangle = styled.div`
+  height: 270px;
+  width: 100%;
+  background-color: var(--background-gray);
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+
+  ${props =>
+    props.margin
+      ? css`
+          margin: 10px;
+        `
+      : css`
+          margin: 0;
+        `}
 `;
 
 

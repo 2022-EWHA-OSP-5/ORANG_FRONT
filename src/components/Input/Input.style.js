@@ -34,6 +34,8 @@ Input.text = styled.input`
     outline: none;
   }
 
+  width: 90%;
+
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;

@@ -1,24 +1,26 @@
 import { Input } from './Input.style';
 import styled from 'styled-components';
-import AddBtn from '../Button/AddBtn';
-import {LocationBtn} from './LocationBtn.style';
-import {ParkingBtn} from './ParkingBtn.style';
-import {ReserveBtn} from './ReserveInput.style';
+import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
+import { React, useState } from 'react';
 
-const MenuInput = ({ InputType }) => {
+const StoreInput = ({ InputType, onChange }) => {
   const InputTypes = [
     { id: 13, name: '식당 이름' },
     { id: 14, name: '위치' },
     { id: 15, name: '상세 주소'},
+    { id: 15, name: '맛집 설명'},
     { id: 15, name: '전화번호'},
     { id: 15, name: '카테고리'},
-    { id: 15, name: '주차 가능 여부'},
     { id: 15, name: '홈페이지'},
-    { id: 15, name: '영업 시간'},
-    { id: 15, name: '가격대'},
-    { id: 15, name: '예약 가능 여부'},
     { id: 15, name: '식당 대표 사진'},
   ];
+
+  const [isBtn, setIsBtn] = useState({
+    front: true,
+    back: false,
+    sinchonstation: false,
+    ewhastation: false,
+  });
 
   return (
    <div>
@@ -28,7 +30,7 @@ const MenuInput = ({ InputType }) => {
               return (
                 <>
                 <Box><Text>{type.name}</Text><Star>*</Star></Box>
-                <Input.Rectangle></Input.Rectangle>
+                <Input.Rectangle><Input.text onChange={onChange} /></Input.Rectangle>
                 </>
               );
             }
@@ -36,7 +38,6 @@ const MenuInput = ({ InputType }) => {
             return (
               <>
               <Box><Text>{type.name}</Text><Star>*</Star></Box>
-              <LocationBtn></LocationBtn>
               </>
             );
           }
@@ -45,53 +46,31 @@ const MenuInput = ({ InputType }) => {
                 <>
                 <Box><Text>{type.name}</Text><Star>*</Star></Box>
                 <Selection
-                    name="category-list" id="category-list">
-                    <option value="">한식</option>
-                    <option value="">양식</option>
-                    <option value="">일식</option>
-                    <option value="">중식</option>
-                    <option value="">아시아음식</option>
-                    <option value="">간편식</option>
+                    name="category-list" id="category-list" onChange={onChange}>
+                    <option value="한식">한식</option>
+                    <option value="양식">양식</option>
+                    <option value="일식">일식</option>
+                    <option value="중식">중식</option>
+                    <option value="분식">분식</option>
                 </Selection>
                 </>
             )
           }
-          if (type.name === '주차 가능 여부'){
+          if (type.name === '상세 주소'){
             return (
               <>
-              <Box><Text>{type.name}</Text></Box>
-              <ParkingBtn></ParkingBtn>
-              </>
-            );
-          }
-          if (type.name === '가격대'){
-            return(
-                <>
-                <Box><Text>{type.name}</Text><Star>*</Star></Box>
-                <Selection
-                    name="category-list" id="category-list">
-                    <option value="">1만원 이하</option>
-                    <option value="">1-2만원대</option>
-                    <option value="">2-3만원대</option>
-                    <option value="">3-4만원대</option>
-                    <option value="">4만원 이상</option>
-                </Selection>
-                </>
-            )
-          }
-          if (type.name === '예약 가능 여부'){
-            return (
-              <>
-              <Box><Text>{type.name}</Text></Box>
-              <ReserveBtn></ReserveBtn>
+              <Box><Text>{type.name}</Text><Star>*</Star></Box>
+              <Input.Rectangle><Input.text onChange={onChange} /></Input.Rectangle>
+              
               </>
             );
           }
           if (type.name === '식당 대표 사진'){
             return (
               <>
-              <Box><Text>{type.name}</Text></Box>
-              <AddBtn></AddBtn>
+              <Box><Text>{type.name}</Text><Star>*</Star></Box>
+              <label for="file-upload"><img src={RedAddBtn}></img></label>
+              <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} onChange={onChange}/>
               
               </>
             );
@@ -100,7 +79,7 @@ const MenuInput = ({ InputType }) => {
             return (
             <>
             <Box><Text>{type.name}</Text></Box>
-            <Input.Rectangle></Input.Rectangle>
+            <Input.Rectangle><Input.text onChange={onChange} /></Input.Rectangle>
             </>
           );
           }
@@ -111,7 +90,7 @@ const MenuInput = ({ InputType }) => {
   );
 };
 
-export default MenuInput;
+export default StoreInput;
 
 const Text = styled.p`
 font-size: 17px;
