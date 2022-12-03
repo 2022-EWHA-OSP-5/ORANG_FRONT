@@ -71,19 +71,19 @@ Layout.Blank2 = styled.div`
   clear:both;
 `;
 
-Layout.text = styled.input`
+Layout.text = styled.textarea`
   background: transparent;
   border: none;
   &:focus {
     outline: none;
   }
-  width: 90%;
+  width: 80%;
+  height: 80%;
 
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 18px;
 
   color: rgba(99, 99, 99, 0.8);
 

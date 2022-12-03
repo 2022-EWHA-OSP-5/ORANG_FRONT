@@ -1,12 +1,13 @@
 import { Layout } from './Add.style'
 import GoBackBar from '../../components/Navigate/GoBackBar';
-import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
+import BottomNavigateBar from '../../components/Navigate/BottomDeleteNavigateBar';
 import MenuInput from '../../components/Input/MenuInput';
 import Button from '../../components/Detail/Button';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { upload } from '@testing-library/user-event/dist/upload';
 
 export default function SignUpPage() {
 
@@ -70,6 +71,7 @@ export default function SignUpPage() {
                                   if(e.target.files){
                                     setuploadFile(e.target.files[0]);
                                   }}}/>
+                {uploadFile ? (<input type="image" src={uploadFile}/>) : null}
                 </Layout.Input>
             </Layout.InputBox>
             <Layout.Blank/>

@@ -1,6 +1,6 @@
 import { Layout } from './Add.style'
 import GoBackBar from '../../components/Navigate/GoBackBar';
-import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
+import BottomNavigateBar from '../../components/Navigate/BottomDeleteNavigateBar';
 import StoreInput from '../../components/Input/StoreInput';
 import OrangeBtn from '../../components/Button/OrangeBtn';
 import styled from 'styled-components';

@@ -1,6 +1,6 @@
 import { Layout } from './Add.style'
 import GoBackBar from '../../components/Navigate/GoBackBar';
-import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
+import BottomNavigateBar from '../../components/Navigate/BottomDeleteNavigateBar';
 import styled from 'styled-components';
 import Button from '../../components/Detail/Button';
 import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
@@ -62,7 +62,7 @@ export default function AddReviewPage() {
 
     return (
       <Layout.Display>
-          <GoBackBar TopBarName="" path="/detail" onClick={() => {}}/>
+          <GoBackBar TopBarName="" path="/list"/>
           <Layout.Blank/>
           <Layout.Container>
                 <H2>반서울</H2>
