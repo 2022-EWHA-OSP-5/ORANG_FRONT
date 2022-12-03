@@ -46,6 +46,7 @@ export default function SignUpPage() {
     <Layout.Display>
         <GoBackBar TopBarName="메뉴 등록하기" />
         <Layout.Container>
+            <Layout.Blank2/>
             <Layout.HeadText>'소녀방앗간'에서의 식사는 만족스러우셨나요?</Layout.HeadText>
             <Layout.HeadText>벗들에게 '소녀방앗간'의 메뉴를 추천해주세요!</Layout.HeadText>
 

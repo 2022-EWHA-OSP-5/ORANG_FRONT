@@ -47,7 +47,7 @@ export default function AddReviewPage() {
 
 
       axios
-        .post('http://127.0.0.1:5000/1/reviews', data, {
+        .post('http://127.0.0.1:5000/restaurants/1/reviews', data, {
           headers: {
             'Content-Type' : 'multipart/form-data',
           },

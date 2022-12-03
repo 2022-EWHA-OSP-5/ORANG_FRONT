@@ -75,6 +75,7 @@ export default function AddStorePage() {
     <Layout.Display>
         <GoBackBar TopBarName="맛집 등록하기" />
         <Layout.Container>
+          <Layout.Blank2/>
             <Layout.HeadText><Star>숨겨진 맛집</Star>을 등록해 벗들에게 공유해주세요!</Layout.HeadText>
             
             <Layout.InputBox>
@@ -132,7 +133,7 @@ export default function AddStorePage() {
             <Layout.Blank/>
             <Layout.HeadText><Star>* </Star>은 필수 입력 항목입니다.</Layout.HeadText>
             <Layout.HeadText>* 부정확한 정보는 무통보 삭제될 수 있습니다</Layout.HeadText>
-            <Layout.Blank/>
+            <Layout.Blank2/><Layout.Blank2/>
 
             <OrangeBtn onClick={() => UploadStore()}>맛집 등록하기</OrangeBtn>
             <Layout.Blank2/>

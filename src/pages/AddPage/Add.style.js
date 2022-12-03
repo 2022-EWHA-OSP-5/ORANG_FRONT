@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 const Layout = {};
 
 Layout.Display = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,8 +20,8 @@ Layout.InputBox = styled.div`
 `;
 
 Layout.Container = styled.div`
-  width: 88%;
-  margin: 20px 40px;
+  width: 80%;
+  margin-top: 2%
 `;
 
 Layout.Container2 = styled.div`
