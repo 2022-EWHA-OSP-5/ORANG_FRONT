@@ -6,6 +6,7 @@ import OrangeBtn from '../../components/Button/OrangeBtn';
 import styled from 'styled-components';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddStorePage() {
 
@@ -23,24 +24,28 @@ export default function AddStorePage() {
   const [image, setimage] = useState(null);
   const [location, setlocation] = useState('정문');
   const [address, setaddress] = useState('');
-  const [category, setcategory] = useState('');
+  const [category, setcategory] = useState('한식');
   const [phone, setphone] = useState('');
   const [description, setdescription] = useState('');
   const [homepage, sethomepage] = useState('');
 
 
   const UploadStore = () => {
+    
+    if(isBtn.ewhastation==true){setlocation('이대역');}
+    else if (isBtn.back==true){setlocation('후문');}
+    else if (isBtn.sinchonstation==true){setlocation('신촌기차역');}
+    else {setlocation('정문');}
+
     if (name == ''){
       alert("식당이름을 입력해주세요.");
+    }else if(location == null){
+      alert("위치를 입력해주세요.")
     }else if(address==''){
       alert("상세 주소를 입력해주세요.")
     }else if(image == null){
       alert("사진을 업로드해주세요.")
     }else{
-      if(isBtn.front==true){setlocation('정문')}
-      else if (isBtn.back==true){setlocation('후문')}
-      else if (isBtn.sinchonstation==true){setlocation('신촌기차역')}
-      else {setlocation('이대역')}
 
       data.append('name', name);
       data.append('location', location);

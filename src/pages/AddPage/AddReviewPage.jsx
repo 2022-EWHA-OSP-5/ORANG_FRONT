@@ -11,6 +11,7 @@ import axios from 'axios';
 export default function AddReviewPage() {
 
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));
+  
   var Formdata = require('form-data');
   const data = new Formdata();
 
@@ -28,30 +29,31 @@ export default function AddReviewPage() {
 
 
   const UploadReview = () => {
-    if (score == 0){
-      alert("별점을 남겨주세요.");
-    }else{
-      if(isBtn.five==true){setscore(5)}
+
+    if(isBtn.five==true){setscore(5)}
       else if(isBtn.four==true){setscore(4)}
       else if(isBtn.three==true){setscore(3)}
       else if(isBtn.two==true){setscore(2)}
       else {setscore(1)}
+      
+    if (score == 0){
+      alert("별점을 남겨주세요.");
+    }else{
 
       data.append('user_id', currentUserInfo);
       data.append('content', content);
       data.append('score', score);
       data.append('image', image);
 
-    /*
+
       axios
-        .post('http://127.0.0.1:5000/....', data, {
+        .post('http://127.0.0.1:5000/1/reviews', data, {
           headers: {
             'Content-Type' : 'multipart/form-data',
           },
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
-*/
     }
     };
 
