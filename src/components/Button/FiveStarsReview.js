@@ -12,49 +12,49 @@ const FiveStarReview = () => {
       });
 
       return(
-        <Container>
-            <Button onClick={() => {setIsBtn({ one: true, two: false, three: false, four: false, five: false,})}}>
+        <Container2>
+            <Button2 onClick={() => {setIsBtn({ one: true, two: false, three: false, four: false, five: false,})}}>
             <Star style={{
               fill: isBtn.one ? '#FAB93B' : 'white',
               stroke: isBtn.one ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </Star></Button>
+                </Star></Button2>
 
-            <Button onClick={() => {setIsBtn({ one: true, two: true, three: false, four: false, five: false,})}}>
+            <Button2 onClick={() => {setIsBtn({ one: true, two: true, three: false, four: false, five: false,})}}>
             <Star style={{
               fill: isBtn.two ? '#FAB93B' : 'white',
               stroke: isBtn.two ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </Star></Button>
+                </Star></Button2>
 
-            <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: false, five: false,})}}>
+            <Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: false, five: false,})}}>
             <Star style={{
               fill: isBtn.three ? '#FAB93B' : 'white',
               stroke: isBtn.three ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </Star></Button>
+                </Star></Button2>
 
-            <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: false,})}}>
+            <Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: false,})}}>
             <Star style={{
               fill: isBtn.four ? '#FAB93B' : 'white',
               stroke: isBtn.four ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </Star></Button>
+                </Star></Button2>
             
-            <Button onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: true,})}}>
+            <Button2 onClick={() => {setIsBtn({ one: true, two: true, three: true, four: true, five: true,})}}>
             <Star style={{
               fill: isBtn.five ? '#FAB93B' : 'white',
               stroke: isBtn.five ? '#FAB93B' : 'var(--dark-gray)',
             }}>
-                </Star></Button>
+                </Star></Button2>
             
-            </Container>
+            </Container2>
 )}
 
 export { FiveStarReview };
 
 
-const Container = styled.div`
+const Container2 = styled.div`
   width: 100%;
   display: flex;
 justify-content:center; 
@@ -62,7 +62,7 @@ align-items : center;
 `;
 
 
-const Button = styled.div`
+const Button2 = styled.div`
 padding: 5px;
 `;
 
