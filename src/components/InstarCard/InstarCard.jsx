@@ -17,22 +17,22 @@ const InstarCard = ({ profile, review, restaurant }) => {
     <Layout.Box>
       <Layout.Title>
         <div className="profile"></div>
-        <p className="nickname">{profile.name}</p>
+        <p className="nickname">오랭 선생님</p>
       </Layout.Title>
 
       <Layout.ImgSection background={food2}>
         <Layout.ImgShadow />
         <Layout.ImgText>
           <img scr={Quotation} className="quotation" />
-          <p className="review_title">{review.title}</p>
-          <p className="review">{review.detail}</p>
+          <p className="review_title">{review.content}</p>
+          <p className="review">{review.content}</p>
         </Layout.ImgText>
       </Layout.ImgSection>
 
       <Layout.Restaurant>
-        <p className="restaurant">{restaurant.restaurant}</p>
+        <p className="restaurant">{review.restaurant}</p>
         <img className="star" src={YellowStar} />
-        <p className="grade">{restaurant.grade}</p>
+        <p className="grade">{review.score}</p>
       </Layout.Restaurant>
 
       <Text.GotoDetail>바로 가기</Text.GotoDetail>

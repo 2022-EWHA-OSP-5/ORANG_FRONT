@@ -55,15 +55,6 @@ const restaurants = [
   },
 ];
 
-const options = [
-  {
-    name: '위치',
-    options: [{ value: '정문' }, { value: '후문' }, { value: '신촌역' }],
-  },
-  {
-    name: '카테고리',
-    options: [{ value: '아시아' }, { value: '양식' }, { value: '중식' }],
-  },
-];
+const options = ['한식', '아시아', '양식', '중식'];
 
 export { restaurants, options };

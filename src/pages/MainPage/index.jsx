@@ -11,31 +11,51 @@ import { profile, review, restaurant, restaurants } from './data';
 
 import axios from 'axios';
 
-import { useState } from 'react';
-export default function MainPage() {
-  const [restaurants, setRestaurants] = useState([]);
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-  function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
+export default function MainPage() {
+  const navigate = useNavigate();
+
+  const [restaurants, setRestaurants] = useState([]);
+  const [random, setRandom] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
+  function lottoNum(length) {
+    let lotto = [];
+    let i = 0;
+    while (i < 6) {
+      let n = Math.floor(Math.random() * length);
+      if (!sameNum(n)) {
+        lotto.push(n);
+        i++;
+      }
+    }
+    function sameNum(n) {
+      return lotto.find(e => e === n);
+    }
+    return lotto;
   }
 
-  shuffle(restaurants);
+  useEffect(() => {
+    // 리뷰 랜덤
+    axios
+      .get('http://127.0.0.1:5000/home')
+      .then(res => console.log('테스트', setReviews(res.data.data.reviews)))
+      .catch(err => console.log(err));
 
-  // 맛집 랜덤 추천
-  axios
-    .get('http://127.0.0.1:5000/restaurant', {
-      headers: { Category: 'all' },
-    })
-    .then(res => {
-      setRestaurants(res.data.data);
-      console.log(
-        '원본',
-        res.data.data,
-        '섞은 후',
-        setRestaurants(shuffle(restaurants)),
-      );
-    })
-    .catch(err => console.log(err));
+    // 맛집 랜덤 추천
+    axios
+      .get('http://127.0.0.1:5000/restaurants')
+      .then(res => {
+        const length = res.data.data.length;
+        const random = lottoNum(length);
+        console.log('원본', res.data.data, '섞은 후', random);
+        setRestaurants(res.data.data);
+        setRandom(random);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <Layout.Display>
@@ -58,23 +78,15 @@ export default function MainPage() {
       <Text.Mini>벗들이 직접 남긴 솔직한 리뷰</Text.Mini>
 
       <Layout.InstarSlider>
-        <InstarCard
-          profile={profile[0]}
-          review={review[0]}
-          restaurant={restaurant[0]}
-        ></InstarCard>
-
-        <InstarCard
-          profile={profile[1]}
-          review={review[1]}
-          restaurant={restaurant[1]}
-        ></InstarCard>
-
-        <InstarCard
-          profile={profile[1]}
-          review={review[1]}
-          restaurant={restaurant[1]}
-        ></InstarCard>
+        {reviews.map(review => {
+          return (
+            <InstarCard
+              profile={profile[0]}
+              review={review}
+              restaurant={restaurant[0]}
+            ></InstarCard>
+          );
+        })}
       </Layout.InstarSlider>
 
       <Layout.Full>
@@ -82,15 +94,23 @@ export default function MainPage() {
           오랭's 맛집 <span id="point">랜덤 추천</span>
         </Text.Title>
         <Text.GotoFull>
-          <p>전체보기</p>
+          <p onClick={() => navigate('/list')}>전체보기</p>
           <img src={Right} />
         </Text.GotoFull>
       </Layout.Full>
 
       <Text.Mini>뭐 먹을지 못 고르겠다면?</Text.Mini>
 
-      {restaurants.map(res => {
-        return <List restaurant={res} />;
+      {random.map(res => {
+        return (
+          <List
+            restaurant={restaurants[res]}
+            onClick={() => {
+              navigate(`/detail/${restaurants[res].id}`);
+              console.log('sdfsdfsd');
+            }}
+          ></List>
+        );
       })}
 
       <BottomNavigateBar />

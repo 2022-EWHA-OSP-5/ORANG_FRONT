@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Layout, Com } from './style';
 import Profil from '../../assets/Profile/Profile.svg';
 import GoBackBar from '../../components/Navigate/GoBackBar';
@@ -13,18 +12,40 @@ import List from '../../components/List/List';
 
 import data from './data.js';
 
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
+import { review } from '../MainPage/data';
 
 export default function MyPage() {
-  /*내가 쓴 리뷰 조회 */
-  axios
-    .get('http://127.0.0.1:5000/mypage/review', {
-      headers: { User: 2 },
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+  var currentUserInfo = JSON.parse(localStorage.getItem('id'));
+
+  const [myreviews, setMyreviews] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
+
+  useEffect(() => {
+    /*내가 쓴 리뷰 조회 */
+    axios
+      .get('http://127.0.0.1:5000/mypage/reviews', {
+        headers: { User: currentUserInfo },
+      })
+      .then(res => {
+        setMyreviews(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get('http://127.0.0.1:5000/mypage/bookmark', {
+        headers: { User: currentUserInfo },
+      })
+      .then(res => {
+        setBookmarks(res.data.data);
+        console.log('북마크', res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const navigate = useNavigate();
 
@@ -93,30 +114,34 @@ export default function MyPage() {
           })}
         </div>
       ) : (
-        <div>
-          <Com.Num>전체 15개</Com.Num>
-          <Layout.Title>
-            <p className="title">반서울</p>
-            <p className="goto-detail">
-              가게 바로 가기 <img src={Right} />
-            </p>
-          </Layout.Title>
-          <Layout.Detail>
-            <img src={Star} />
-            <p className="grade">5.0</p>
-            <p className="date">2022.10.01 방문</p>
-          </Layout.Detail>
-          <Layout.Review>
-            정정말 맛있었어요! 추천합니다~ 정말 맛있었어요! 추천합니다~ 정말
-            정말 맛있었어요! 추천합니다~
-          </Layout.Review>
-          <Com.RevieImg>
-            <img src={food} />
-          </Com.RevieImg>
-          <Com.gotoDetail>
-            <p>본문보기</p>
-          </Com.gotoDetail>
-        </div>
+        myreviews.map(review => {
+          return (
+            <div>
+              <Com.Num>전체 15개</Com.Num>
+              <Layout.Title>
+                <p className="title">반서울</p>
+                <p className="goto-detail">
+                  가게 바로 가기 <img src={Right} />
+                </p>
+              </Layout.Title>
+              <Layout.Detail>
+                <img src={Star} />
+                <p className="grade">5.0</p>
+                <p className="date">2022.10.01 방문</p>
+              </Layout.Detail>
+              <Layout.Review>
+                정정말 맛있었어요! 추천합니다~ 정말 맛있었어요! 추천합니다~ 정말
+                정말 맛있었어요! 추천합니다~
+              </Layout.Review>
+              <Com.RevieImg>
+                <img src={food} />
+              </Com.RevieImg>
+              <Com.gotoDetail>
+                <p>본문보기</p>
+              </Com.gotoDetail>
+            </div>
+          );
+        })
       )}
 
       <BottomNavigateBar />
