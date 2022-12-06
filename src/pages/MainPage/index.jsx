@@ -9,7 +9,34 @@ import CustomSwiper from '../../components/Swiper/CustomSwiper';
 
 import { profile, review, restaurant, restaurants } from './data';
 
+import axios from 'axios';
+
+import { useState } from 'react';
 export default function MainPage() {
+  const [restaurants, setRestaurants] = useState([]);
+
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+
+  shuffle(restaurants);
+
+  // 맛집 랜덤 추천
+  axios
+    .get('http://127.0.0.1:5000/restaurant', {
+      headers: { Category: 'all' },
+    })
+    .then(res => {
+      setRestaurants(res.data.data);
+      console.log(
+        '원본',
+        res.data.data,
+        '섞은 후',
+        setRestaurants(shuffle(restaurants)),
+      );
+    })
+    .catch(err => console.log(err));
+
   return (
     <Layout.Display>
       <TopNavigateBar />
