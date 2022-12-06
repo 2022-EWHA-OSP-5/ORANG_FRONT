@@ -30,46 +30,32 @@ export default function AddReviewPage() {
   const [image, setimage] = useState(null);
 
   const UploadReview = () => {
-    if (isBtn.five == true) {
-      setscore(5);
-    } else if (isBtn.four == true) {
-      setscore(4);
-    } else if (isBtn.three == true) {
-      setscore(3);
-    } else if (isBtn.two == true) {
-      setscore(2);
-    } else {
-      setscore(1);
-    }
-
     if (score == 0) {
       alert('별점을 남겨주세요.');
     } else {
-      //console.log(currentUserInfo, content, score, image);
+      data.append('user_id', currentUserInfo);
+      data.append('content', content);
+      data.append('score', score);
+      data.append('image', image);
+
+      axios
+        .post('http://127.0.0.1:5000/restaurants/1/reviews', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(res => {
+          console.log(res);
+
+          navigate('/detail/review');
+        })
+        .catch(err => console.log(err));
     }
-
-    data.append('user_id', 2);
-    data.append('content', '허ㅓ');
-    data.append('score', 4);
-    data.append('image', image);
-
-    axios
-      .post('http://127.0.0.1:5000/restaurants/1/reviews', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then(res => {
-        console.log(res);
-
-        navigate('/detail/review');
-      })
-      .catch(err => console.log(err));
   };
 
   return (
     <Layout.Display>
-      <GoBackBar TopBarName="" path="/list" />
+      <GoBackBar TopBarName="" path={-1} />
       <Layout.Blank />
       <Layout.Container>
         <H2>반서울</H2>
@@ -175,6 +161,11 @@ export default function AddReviewPage() {
             ></Star>
           </Layout.Button2>
         </Layout.Container2>
+
+        <Layout.Blank2 />
+        <Layout.Rectangle>
+          <Layout.text onChange={e => setcontent(e.target.value)} />
+        </Layout.Rectangle>
 
         <Layout.Blank2 />
         <label for="file-upload">
