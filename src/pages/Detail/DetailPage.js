@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { React, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 import DetailHeader from '../../components/Detail/DetailHeader';
 import DetailInfo from '../../components/Detail/DetailInfo';
 import DetailMenu from '../../components/Detail/DetailMenu';
@@ -9,15 +10,30 @@ import BottomMenu from '../../components/Detail/BottomMenu';
 import mainimg from '../../assets/Detail/DetailMainImg.svg';
 import back from '../../assets/Navigate/Back.svg';
 
-import axios from 'axios';
 const DetailPage = () => {
   const Nav = useNavigate();
+  //let { rId } = useParams();
+  const rId = 1;
   const [isTab, setIsTab] = useState({
-    info: true,
-    menu: false,
+    menu: true,
     review: false,
+    info: false,
   });
-  const TabString = ['정보', '메뉴', '리뷰'];
+  const TabString = ['메뉴', '리뷰', '정보'];
+  const [rest, setRest] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${rId}`, {
+        headers: {
+          Restaurant: rId,
+        },
+      })
+      .then(res => {
+        //console.log(res.data.data);
+        setRest(res.data.data[0]);
+      })
+      .catch(err => console.log(err));
+  }, []);
   return (
     <>
       <Wrapper>
@@ -27,24 +43,9 @@ const DetailPage = () => {
         <BackButton onClick={() => Nav('/list')}>
           <Back src={back} />
         </BackButton>
-        <DetailHeader />
+        <DetailHeader rId={rId} />
         <Divider />
         <TabContainer>
-          <Tab
-            style={{
-              borderBottom: isTab.info ? '3px solid var(--orange)' : null,
-            }}
-            onClick={() => setIsTab({ info: true, menu: false, review: false })}
-          >
-            <TabText
-              style={{
-                fontWeight: isTab.info ? '600' : '400',
-                color: isTab.info ? '#000' : 'var(--dark-gray)',
-              }}
-            >
-              정보
-            </TabText>
-          </Tab>
           <Tab
             style={{
               borderBottom: isTab.menu ? '3px solid var(--orange)' : null,
@@ -75,14 +76,29 @@ const DetailPage = () => {
               리뷰
             </TabText>
           </Tab>
+          <Tab
+            style={{
+              borderBottom: isTab.info ? '3px solid var(--orange)' : null,
+            }}
+            onClick={() => setIsTab({ info: true, menu: false, review: false })}
+          >
+            <TabText
+              style={{
+                fontWeight: isTab.info ? '600' : '400',
+                color: isTab.info ? '#000' : 'var(--dark-gray)',
+              }}
+            >
+              정보
+            </TabText>
+          </Tab>
         </TabContainer>
         <MainContainer>
           {isTab.info ? (
-            <DetailInfo />
+            <DetailInfo rId={rId} />
           ) : isTab.menu ? (
-            <DetailMenu />
+            <DetailMenu rId={rId} />
           ) : isTab.review ? (
-            <DetailReview />
+            <DetailReview rId={rId} />
           ) : null}
         </MainContainer>
       </Wrapper>

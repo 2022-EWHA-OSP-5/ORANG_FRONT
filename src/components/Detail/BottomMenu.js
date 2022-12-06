@@ -4,12 +4,15 @@ import Share from '../../assets/Detail/Share.svg';
 import MyPage from '../../assets/Navigate/MyPage.svg';
 import { BM } from './Detail.style';
 import Button from './Button';
-import { useState } from 'react';
-import Modal from '../Modal/Modal';
+import { useState, useEffect } from 'react';
+import ReserveModal from '../Modal/ReserveModal';
 import ShareModal from '../Modal/ShareModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const BottomMenu = () => {
+  //let { rId } = useParams();
+  const rId = 1;
   const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
   const openRModal = () => {
@@ -25,14 +28,36 @@ const BottomMenu = () => {
   const closeSModal = () => {
     isSModal(false);
   };
+  const [rest, setRest] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${rId}`, {
+        headers: {
+          Restaurant: rId,
+        },
+      })
+      .then(res => {
+        //console.log(res.data.data);
+        setRest(res.data.data[0]);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  var currentUser = JSON.parse(localStorage.getItem('id'));
+  const Bookmark = rId => {
+    axios
+      .post(`http://127.0.0.1:5000/restaurants/${rId}/bookmarks`, {
+        user_id: currentUser,
+      })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  };
   return (
     <>
       <BM.Rectangle>
         <BM.Home src={Home} onClick={() => Nav('/')} />
-        <BM.BookMark
-          src={BookMark}
-          onClick={() => console.log('좋아요 설정/해제 함수 넣기')}
-        />
+        <BM.BookMark src={BookMark} onClick={() => Bookmark(rId)} />
         <BM.Share src={Share} onClick={() => openSModal()} />
         <BM.MyPage src={MyPage} onClick={() => Nav('/mypage')} />
         <Button
@@ -42,20 +67,14 @@ const BottomMenu = () => {
           arrow={false}
         />
       </BM.Rectangle>
-      {RModal ? (
-        <Modal
+      {rest && RModal ? (
+        <ReserveModal
           open={RModal}
           close={closeRModal}
           subtext="맛집 예약을 진행합니다."
           maintext="예약 방법을 선택해주세요."
-          button1text="사이트로 예약하기"
-          button2text="전화로 예약하기"
-          onClick1={() => {
-            console.log('위 버튼 클릭');
-          }}
-          onClick2={() => {
-            console.log('아래 버튼 클릭');
-          }}
+          onClick1={rest.homepage}
+          onClick2={rest.phone}
         />
       ) : null}
       {SModal ? <ShareModal open={SModal} close={closeSModal} /> : null}
