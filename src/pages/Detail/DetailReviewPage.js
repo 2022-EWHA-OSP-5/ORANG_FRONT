@@ -1,58 +1,92 @@
 import styled from 'styled-components';
+import { R } from '../../components/Detail/Detail.style';
 import GoBackBar from '../../components/Navigate/GoBackBar';
 import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
-import Review from '../../components/Detail/Review';
-import reviewimg1 from '../../assets/Detail/ReviewImg1.svg';
-import reviewimg2 from '../../assets/Detail/ReviewImg2.svg';
+import starimg from '../../assets/Detail/Star.svg';
+import orange1 from '../../assets/Detail/Orange1.svg';
+import orange2 from '../../assets/Detail/Orange2.svg';
+import orange3 from '../../assets/Detail/Orange3.svg';
+import orange4 from '../../assets/Detail/Orange4.svg';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const DetailReviewPage = () => {
-  const review = [
-    {
-      author: 'ewha1234',
-      date: '2022.10.25',
-      star: 5.0,
-      img: reviewimg1,
-      content: '너무 맛있어요 아주 그냥 개꿀맛~',
-    },
-    {
-      author: 'osp12345',
-      date: '2022.10.20',
-      star: 4.0,
-      img: reviewimg2,
-      content: '굿!!\n굿~~~~~~~~~\n굿~~',
-    },
-    {
-      author: 'sdfsefef',
-      date: '2022.9.2',
-      star: 3.0,
-      img: reviewimg1,
-      content: '너무 맛있어요 아주 그냥 개꿀맛~',
-    },
-    {
-      author: 'ukhub5',
-      date: '2022.8.15',
-      star: 2.0,
-      img: reviewimg2,
-      content: '굿!!\n굿~~~~~~~~~\n굿~~',
-    },
-  ];
+  //let { rId } = useParams();
+  const rId = 1;
+  const [review, setReview] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${rId}/reviews`)
+      .then(res => {
+        console.log(res.data);
+        setReview(res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  const ProfileImg = [orange1, orange2, orange3, orange4];
+  let originAuthor = 'ops1035';
+  let maskedAuthor;
+  if (originAuthor === '') {
+    maskedAuthor = originAuthor;
+  } else {
+    if (originAuthor.length < 3) {
+      maskedAuthor = originAuthor.replace(/(?<=.{1})./gi, '*');
+    } else {
+      maskedAuthor = originAuthor.replace(/(?<=.{3})./gi, '*');
+    }
+  }
   return (
     <>
-      <GoBackBar TopBarName="전체 리뷰" />
+      <GoBackBar TopBarName="전체 리뷰" path={-1} />
       <Wrapper>
         <Container>
           <NumText>리뷰 {review.length}건</NumText>
-          {review.map(review => {
-            return (
-              <Review
-                author={review.author}
-                date={review.date}
-                star={review.star}
-                img={review.img}
-                content={review.content}
-              />
-            );
-          })}
+          {review &&
+            review.map(review => {
+              const rand = Math.floor(Math.random() * 4);
+              return (
+                <>
+                  <R.Container>
+                    <R.Header>
+                      <R.ProfileCircle>
+                        <div>
+                          <R.Profile src={ProfileImg[rand]} />
+                        </div>
+                      </R.ProfileCircle>
+                      <div>
+                        <R.Author>{maskedAuthor}</R.Author>
+                        <div style={{ display: 'flex' }}>
+                          <R.StarImg src={starimg} />
+                          <R.Star>{review.score.toFixed(1)}</R.Star>
+                        </div>
+                      </div>
+                    </R.Header>
+                    <R.ImgRect>
+                      <R.Img src={review.image} />
+                    </R.ImgRect>
+                    <R.Content>
+                      {review.content && review.content.includes('\n') ? (
+                        <>
+                          {review.content.split('\n').map(line => {
+                            return (
+                              <span>
+                                {line}
+                                <br />
+                              </span>
+                            );
+                          })}
+                        </>
+                      ) : (
+                        <>
+                          <span>{review.content}</span>
+                        </>
+                      )}
+                    </R.Content>
+                  </R.Container>
+                </>
+              );
+            })}
         </Container>
         <Blank />
       </Wrapper>

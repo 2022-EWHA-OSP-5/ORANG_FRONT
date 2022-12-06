@@ -2,26 +2,21 @@ import { useNavigate } from 'react-router-dom';
 import { C, M } from './Detail.style';
 import menuimg from '../../assets/Detail/MenuImg.svg';
 import orangeback from '../../assets/Detail/OrangeBack.svg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const DetailMenu = () => {
+const DetailMenu = ({ rId }) => {
   const Nav = useNavigate();
-  const menu = [
-    {
-      name: '한우대창 파히타1',
-      price: 49000,
-      img: menuimg,
-    },
-    {
-      name: '한우대창 파히타2',
-      price: 50000,
-      img: menuimg,
-    },
-    {
-      name: '한우대창 파히타3',
-      price: 51000,
-      img: menuimg,
-    },
-  ];
+  const [menu, setMenu] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${rId}/menus`)
+      .then(res => {
+        console.log(res.data);
+        setMenu(res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
   return (
     <>
       <C.Title>대표 메뉴</C.Title>
@@ -34,7 +29,7 @@ const DetailMenu = () => {
             </M.ImgRect>
             <M.TextContainer>
               <M.Name>{menu.name}</M.Name>
-              <M.Price>{price}원</M.Price>
+              <M.Price>{price}</M.Price>
             </M.TextContainer>
           </M.Container>
         );
