@@ -9,6 +9,7 @@ import BottomMenu from '../../components/Detail/BottomMenu';
 import mainimg from '../../assets/Detail/DetailMainImg.svg';
 import back from '../../assets/Navigate/Back.svg';
 
+import axios from 'axios';
 const DetailPage = () => {
   const Nav = useNavigate();
   const [isTab, setIsTab] = useState({

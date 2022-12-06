@@ -14,7 +14,18 @@ import List from '../../components/List/List';
 import data from './data.js';
 
 import { useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
+
 export default function MyPage() {
+  /*내가 쓴 리뷰 조회 */
+  axios
+    .get('http://127.0.0.1:5000/mypage/review', {
+      headers: { User: 2 },
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
   const navigate = useNavigate();
 
   var userName = JSON.parse(localStorage.getItem('username'));
