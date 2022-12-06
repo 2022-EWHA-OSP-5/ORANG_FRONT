@@ -16,7 +16,7 @@ const MenuInput = ({ InputType, onChange }) => {
           if (type.name === '메뉴 사진'){
             return (
               <>
-              <Box><Text>{type.name}</Text></Box>
+              <Box><Text>{type.name}</Text><Star>*</Star></Box>
               <label for="file-upload"><img src={RedAddBtn}></img></label>
               <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} onChange={onChange}/>
               
