@@ -17,7 +17,7 @@ const InstarCard = ({ profile, review, restaurant }) => {
     <Layout.Box>
       <Layout.Title>
         <div className="profile"></div>
-        <p className="nickname">오랭 선생님</p>
+        <p className="nickname">{review.username}</p>
       </Layout.Title>
 
       <Layout.ImgSection background={food2}>
