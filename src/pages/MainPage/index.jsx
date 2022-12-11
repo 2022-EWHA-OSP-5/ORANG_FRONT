@@ -82,11 +82,20 @@ export default function MainPage() {
 
       <Layout.InstarSlider>
         {reviews.map(review => {
+          var gotoRestaurant;
+
+          restaurants.map(res => {
+            if (res.name == review.restaurant) {
+              gotoRestaurant = res.id;
+            }
+          });
+
           return (
             <InstarCard
               profile={profile[0]}
               review={review}
               restaurant={restaurant[0]}
+              gotoRestaurant={gotoRestaurant}
             ></InstarCard>
           );
         })}

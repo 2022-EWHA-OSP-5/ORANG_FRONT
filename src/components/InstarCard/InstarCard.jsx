@@ -4,14 +4,10 @@ import food1 from '../../assets/InstarCard/food1.png';
 import food2 from '../../assets/InstarCard/food2.jpg';
 import YellowStar from '../../assets/Star/YellowStar.svg';
 import Quotation from '../../assets/InstarCard/Quotation.svg';
-const InstarCard = ({ profile, review, restaurant }) => {
-  //   var stringToHTML = function (str) {
-  //     var dom = document.createElement('div');
-  //     dom.innerHTML = str;
-  //     return dom;
-  //   };
-  //   const newText = stringToHTML(review.title);
-  //   console.log(newText);
+
+import { useNavigate } from 'react-router-dom';
+const InstarCard = ({ review, gotoRestaurant }) => {
+  const navigate = useNavigate();
 
   return (
     <Layout.Box>
@@ -20,7 +16,7 @@ const InstarCard = ({ profile, review, restaurant }) => {
         <p className="nickname">{review.username}</p>
       </Layout.Title>
 
-      <Layout.ImgSection background={food2}>
+      <Layout.ImgSection background={`http://127.0.0.1:5000//${review.image}`}>
         <Layout.ImgShadow />
         <Layout.ImgText>
           <img scr={Quotation} className="quotation" />
@@ -35,7 +31,9 @@ const InstarCard = ({ profile, review, restaurant }) => {
         <p className="grade">{review.score}</p>
       </Layout.Restaurant>
 
-      <Text.GotoDetail>바로 가기</Text.GotoDetail>
+      <Text.GotoDetail onClick={() => navigate(`detail/${gotoRestaurant}`)}>
+        바로 가기
+      </Text.GotoDetail>
     </Layout.Box>
   );
 };
