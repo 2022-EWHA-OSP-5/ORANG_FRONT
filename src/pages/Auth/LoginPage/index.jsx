@@ -26,8 +26,6 @@ export default function LoginPage() {
         localStorage.setItem('id', JSON.stringify(userInfo.id));
         localStorage.setItem('username', JSON.stringify(userInfo.username));
 
-        var currentUserInfo = JSON.parse(localStorage.getItem('id'));
-
         navigate('/');
       })
       .catch(err => console.log(err));
@@ -58,7 +56,8 @@ export default function LoginPage() {
       <OrangeBtn onClick={() => Login()}>로그인</OrangeBtn>
 
       <Com.Text>
-        회원이 아니신가요? <span>SIGN UP</span>
+        회원이 아니신가요?{' '}
+        <span onClick={() => navigate('/signup')}>SIGN UP</span>
       </Com.Text>
     </Layout.Display>
   );

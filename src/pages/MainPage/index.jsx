@@ -15,8 +15,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function MainPage() {
-  const path = 'C:Usersdy657OneDrive바탕 화면오랭서버2staticimage';
-
   const navigate = useNavigate();
 
   const [restaurants, setRestaurants] = useState([]);

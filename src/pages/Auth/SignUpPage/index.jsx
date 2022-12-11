@@ -20,6 +20,13 @@ export default function SignUpPage() {
   const [pwcheck, setPwCheck] = useState('');
   const [secretkey, setSecretkey] = useState('');
 
+  const [first, setFirst] = useState(false);
+
+  const CheckPW = pw => {
+    setPwCheck(pw);
+    setFirst(true);
+  };
+
   const SignUp = () => {
     if (secretkey !== '1886') {
       alert('비밀단어가 틀렸습니다.');
@@ -69,9 +76,16 @@ export default function SignUpPage() {
           <AuthInput
             InputType="비밀번호 확인"
             value={pwcheck}
-            onChange={e => setPwCheck(e.target.value)}
+            onChange={e => CheckPW(e.target.value)}
           />
-          <img src={Check} id="mini" />
+
+          {/* {first ? <img src={Check} id="mini" /> : <></>} */}
+
+          {password == pwcheck && first ? (
+            <img src={GreenCheck} id="mini" />
+          ) : (
+            <img src={Check} id="mini" />
+          )}
         </Layout.Input_Logo>
 
         <Layout.Input_Logo>
