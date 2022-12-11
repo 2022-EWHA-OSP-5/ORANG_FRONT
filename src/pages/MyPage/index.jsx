@@ -75,7 +75,7 @@ export default function MyPage() {
 
   return (
     <div>
-      <GoBackBar TopBarName="마이페이지" center />
+      <GoBackBar TopBarName="마이페이지" center path="/" />
 
       <Layout.Profile>
         <img src={Profil} className="profile" />
