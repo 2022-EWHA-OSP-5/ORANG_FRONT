@@ -36,7 +36,7 @@ export default function LoginPage() {
 
   return (
     <Layout.Display>
-      <GoBackBar TopBarName="로그인" path="/" />
+      <GoBackBar TopBarName="로그인" path="/" center />
 
       <Com.Logo src={Title_Logo} />
       <Layout.InputBox>
