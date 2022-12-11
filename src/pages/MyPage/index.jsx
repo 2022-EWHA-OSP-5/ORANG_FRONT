@@ -36,15 +36,16 @@ export default function MyPage() {
       })
       .catch(err => console.log(err));
 
+    /*내 북마크 조회 */
     axios
-      .get('http://127.0.0.1:5000/mypage/bookmark', {
+      .get('http://127.0.0.1:5000/mypage/bookmarks', {
         headers: { User: currentUserInfo },
       })
       .then(res => {
         setBookmarks(res.data.data);
         console.log('북마크', res.data.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log('북마크에러', err));
   }, []);
 
   const navigate = useNavigate();
@@ -108,9 +109,14 @@ export default function MyPage() {
 
       {activeBtn[0].active === true ? (
         <div>
-          <Com.Num>전체 31개</Com.Num>
-          {data.map(res => {
-            return <List restaurant={res} />;
+          <Com.Num>전체 {bookmarks.length}개</Com.Num>
+          {bookmarks.map(bookmark => {
+            return (
+              <List
+                restaurant={bookmark}
+                onClick={() => navigate(`/detail/${bookmark.id}`)}
+              />
+            );
           })}
         </div>
       ) : (
