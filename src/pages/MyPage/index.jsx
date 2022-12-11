@@ -32,19 +32,20 @@ export default function MyPage() {
       })
       .then(res => {
         setMyreviews(res.data.data);
-        console.log(res.data.data);
+        console.log('내 리뷰', res.data.data);
       })
       .catch(err => console.log(err));
 
+    /*내 북마크 조회 */
     axios
-      .get('http://127.0.0.1:5000/mypage/bookmark', {
+      .get('http://127.0.0.1:5000/mypage/bookmarks', {
         headers: { User: currentUserInfo },
       })
       .then(res => {
         setBookmarks(res.data.data);
         console.log('북마크', res.data.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log('북마크에러', err));
   }, []);
 
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ export default function MyPage() {
 
   return (
     <div>
-      <GoBackBar TopBarName="마이페이지" center />
+      <GoBackBar TopBarName="마이페이지" center path="/" />
 
       <Layout.Profile>
         <img src={Profil} className="profile" />
@@ -108,40 +109,45 @@ export default function MyPage() {
 
       {activeBtn[0].active === true ? (
         <div>
-          <Com.Num>전체 31개</Com.Num>
-          {data.map(res => {
-            return <List restaurant={res} />;
+          <Com.Num>전체 {bookmarks.length}개</Com.Num>
+          {bookmarks.map(bookmark => {
+            return (
+              <List
+                restaurant={bookmark}
+                onClick={() => navigate(`/detail/${bookmark.id}`)}
+              />
+            );
           })}
         </div>
       ) : (
-        myreviews.map(review => {
-          return (
-            <div>
-              <Com.Num>전체 15개</Com.Num>
-              <Layout.Title>
-                <p className="title">반서울</p>
-                <p className="goto-detail">
-                  가게 바로 가기 <img src={Right} />
-                </p>
-              </Layout.Title>
-              <Layout.Detail>
-                <img src={Star} />
-                <p className="grade">5.0</p>
-                <p className="date">2022.10.01 방문</p>
-              </Layout.Detail>
-              <Layout.Review>
-                정정말 맛있었어요! 추천합니다~ 정말 맛있었어요! 추천합니다~ 정말
-                정말 맛있었어요! 추천합니다~
-              </Layout.Review>
-              <Com.RevieImg>
-                <img src={food} />
-              </Com.RevieImg>
-              <Com.gotoDetail>
-                <p>본문보기</p>
-              </Com.gotoDetail>
-            </div>
-          );
-        })
+        <div>
+          <Com.Num>전체 {myreviews.length}개</Com.Num>
+          {myreviews.map(review => {
+            return (
+              <div>
+                <Layout.Title>
+                  <p className="title">{review.restaurant}</p>
+                  <p
+                    className="goto-detail"
+                    onClick={() => navigate(`/detail/${review.restaurant_id}`)}
+                  >
+                    가게 바로 가기 <img src={Right} />
+                  </p>
+
+                  <Layout.Detail>
+                    <img src={Star} />
+                    <p className="grade">{review.score}</p>
+                  </Layout.Detail>
+                </Layout.Title>
+
+                <Layout.Review>{review.content}</Layout.Review>
+                <Com.RevieImg>
+                  <img src={`http://127.0.0.1:5000/${review.image}`} />
+                </Com.RevieImg>
+              </div>
+            );
+          })}
+        </div>
       )}
 
       <BottomNavigateBar />

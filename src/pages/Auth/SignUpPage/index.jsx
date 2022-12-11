@@ -12,13 +12,23 @@ import OneBtnModal from '../../../components/Modal/OneBtnModal';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 export default function SignUpPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [pwcheck, setPwCheck] = useState('');
   const [secretkey, setSecretkey] = useState('');
+
+  const [first, setFirst] = useState(false);
+
+  const CheckPW = pw => {
+    setPwCheck(pw);
+    setFirst(true);
+  };
 
   const SignUp = () => {
     if (secretkey !== '1886') {
@@ -48,6 +58,13 @@ export default function SignUpPage() {
       <GoBackBar TopBarName="회원가입" center path="/" />
       <Com.Logo src={Title_Logo} />
 
+      <OneBtnModal
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        subtext="비밀단어"
+        maintext="유명한 숫자 4자리를 입력해주세요"
+        buttontext="닫기"
+      />
       <Layout.InputBox>
         <Layout.Input>
           <AuthInput
@@ -69,9 +86,14 @@ export default function SignUpPage() {
           <AuthInput
             InputType="비밀번호 확인"
             value={pwcheck}
-            onChange={e => setPwCheck(e.target.value)}
+            onChange={e => CheckPW(e.target.value)}
           />
-          <img src={Check} id="mini" />
+
+          {password == pwcheck && first ? (
+            <img src={GreenCheck} id="mini" />
+          ) : (
+            <img src={Check} id="mini" />
+          )}
         </Layout.Input_Logo>
 
         <Layout.Input_Logo>
@@ -80,7 +102,7 @@ export default function SignUpPage() {
             value={secretkey}
             onChange={e => setSecretkey(e.target.value)}
           />
-          <img src={Info} id="mini" />
+          <img src={Info} id="mini" onClick={() => setIsOpen(true)} />
         </Layout.Input_Logo>
       </Layout.InputBox>
 

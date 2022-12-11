@@ -32,7 +32,7 @@ Layout.SelectBox = styled.div`
 
 Layout.Title = styled.div`
   display: flex;
-  margin-left: 24px;
+  margin-left: 22px;
   margin-top: 21px;
 
   .title {
@@ -66,7 +66,8 @@ Layout.Title = styled.div`
 `;
 
 Layout.Detail = styled.div`
-  margin-left: 22px;
+  margin-left: auto;
+  margin-right: 22px;
 
   display: flex;
   align-items: center;

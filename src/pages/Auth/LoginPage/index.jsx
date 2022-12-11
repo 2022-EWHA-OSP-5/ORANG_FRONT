@@ -26,16 +26,17 @@ export default function LoginPage() {
         localStorage.setItem('id', JSON.stringify(userInfo.id));
         localStorage.setItem('username', JSON.stringify(userInfo.username));
 
-        var currentUserInfo = JSON.parse(localStorage.getItem('id'));
-
         navigate('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert('로그인 실패! 다시 시도해주세요.');
+        console.log(err);
+      });
   };
 
   return (
     <Layout.Display>
-      <GoBackBar TopBarName="로그인" path="/" />
+      <GoBackBar TopBarName="로그인" path="/" center />
 
       <Com.Logo src={Title_Logo} />
       <Layout.InputBox>
@@ -58,7 +59,8 @@ export default function LoginPage() {
       <OrangeBtn onClick={() => Login()}>로그인</OrangeBtn>
 
       <Com.Text>
-        회원이 아니신가요? <span>SIGN UP</span>
+        회원이 아니신가요?{' '}
+        <span onClick={() => navigate('/signup')}>SIGN UP</span>
       </Com.Text>
     </Layout.Display>
   );

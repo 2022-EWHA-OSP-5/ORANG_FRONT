@@ -7,13 +7,19 @@ import { useNavigate } from 'react-router-dom';
 const BottomNavigateBar = () => {
   const navigate = useNavigate();
 
+  const isLogin = () => !!localStorage.getItem('id');
+
   return (
     <Bottom.Rectangle>
       <Bottom.Home src={Home} onClick={() => navigate('/')} />
 
       <Bottom.Circle src={Plus} onClick={() => navigate('/add')} />
 
-      <Bottom.Person src={Person} onClick={() => navigate('/mypage')} />
+      {isLogin() ? (
+        <Bottom.Person src={Person} onClick={() => navigate('/mypage')} />
+      ) : (
+        <Bottom.Person src={Person} onClick={() => navigate('/login')} />
+      )}
     </Bottom.Rectangle>
   );
 };

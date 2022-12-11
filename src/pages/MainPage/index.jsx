@@ -41,7 +41,10 @@ export default function MainPage() {
     // 리뷰 랜덤
     axios
       .get('http://127.0.0.1:5000/home')
-      .then(res => console.log('테스트', setReviews(res.data.data.reviews)))
+      .then(res => {
+        console.log('홈 api', res.data.data.reviews);
+        setReviews(res.data.data.reviews);
+      })
       .catch(err => console.log(err));
 
     // 맛집 랜덤 추천
@@ -50,7 +53,7 @@ export default function MainPage() {
       .then(res => {
         const length = res.data.data.length;
         const random = lottoNum(length);
-        console.log('원본', res.data.data, '섞은 후', random);
+        console.log('전체 레스토랑', res.data.data, '섞은 후', random);
         setRestaurants(res.data.data);
         setRandom(random);
       })
@@ -79,11 +82,20 @@ export default function MainPage() {
 
       <Layout.InstarSlider>
         {reviews.map(review => {
+          var gotoRestaurant;
+
+          restaurants.map(res => {
+            if (res.name == review.restaurant) {
+              gotoRestaurant = res.id;
+            }
+          });
+
           return (
             <InstarCard
               profile={profile[0]}
               review={review}
               restaurant={restaurant[0]}
+              gotoRestaurant={gotoRestaurant}
             ></InstarCard>
           );
         })}
