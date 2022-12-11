@@ -12,7 +12,10 @@ import OneBtnModal from '../../../components/Modal/OneBtnModal';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 export default function SignUpPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -55,6 +58,13 @@ export default function SignUpPage() {
       <GoBackBar TopBarName="회원가입" center path="/" />
       <Com.Logo src={Title_Logo} />
 
+      <OneBtnModal
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        subtext="비밀단어"
+        maintext="유명한 숫자 4자리를 입력해주세요"
+        buttontext="닫기"
+      />
       <Layout.InputBox>
         <Layout.Input>
           <AuthInput
@@ -79,8 +89,6 @@ export default function SignUpPage() {
             onChange={e => CheckPW(e.target.value)}
           />
 
-          {/* {first ? <img src={Check} id="mini" /> : <></>} */}
-
           {password == pwcheck && first ? (
             <img src={GreenCheck} id="mini" />
           ) : (
@@ -94,7 +102,7 @@ export default function SignUpPage() {
             value={secretkey}
             onChange={e => setSecretkey(e.target.value)}
           />
-          <img src={Info} id="mini" />
+          <img src={Info} id="mini" onClick={() => setIsOpen(true)} />
         </Layout.Input_Logo>
       </Layout.InputBox>
 

@@ -26,15 +26,11 @@ const OneBtnModal = props => {
             <Contents>
               <div>
                 <TextWrapper>
-                  <SubText>{subtext}</SubText>
-                  <MainText>{maintext}</MainText>
+                  <MainText>{subtext}</MainText>
+                  <SubText>{maintext}</SubText>
                 </TextWrapper>
                 <ButtonWrapper>
-                  <Button
-                    onClick={onClick}
-                    children={buttontext}
-                    width="180px"
-                  />
+                  <Button onClick={close} children={buttontext} width="180px" />
                 </ButtonWrapper>
               </div>
             </Contents>

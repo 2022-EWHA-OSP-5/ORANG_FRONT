@@ -29,6 +29,7 @@ const ButtonText = styled.p`
   font-style: normal;
   font-size: 15px;
   font-weight: 500;
+  line-height: 20px;
 `;
 
 const Back = styled.img`
