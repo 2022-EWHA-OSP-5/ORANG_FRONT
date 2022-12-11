@@ -28,7 +28,10 @@ export default function LoginPage() {
 
         navigate('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert('로그인 실패! 다시 시도해주세요.');
+        console.log(err);
+      });
   };
 
   return (
