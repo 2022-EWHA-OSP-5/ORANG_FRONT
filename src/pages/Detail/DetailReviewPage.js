@@ -12,12 +12,11 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const DetailReviewPage = () => {
-  //let { rId } = useParams();
-  const rId = 1;
+  let { id } = useParams();
   const [review, setReview] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/restaurants/${rId}/reviews`)
+      .get(`http://127.0.0.1:5000/restaurants/${id}/reviews`)
       .then(res => {
         console.log(res.data);
         setReview(res.data.data);

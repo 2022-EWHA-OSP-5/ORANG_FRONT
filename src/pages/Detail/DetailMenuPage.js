@@ -10,12 +10,11 @@ import axios from 'axios';
 
 const DetailMenuPage = () => {
   const Nav = useNavigate();
-  //let { rId } = useParams();
-  const rId = 1;
+  let { id } = useParams();
   const [menu, setMenu] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/restaurants/${rId}/menus/all`)
+      .get(`http://127.0.0.1:5000/restaurants/${id}/menus/all`)
       .then(res => {
         console.log(res.data);
         setMenu(res.data.data);

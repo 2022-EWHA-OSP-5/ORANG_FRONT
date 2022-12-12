@@ -35,7 +35,7 @@ const DetailMenu = ({ rId }) => {
         );
       })}
       <C.LinkContainer>
-        <C.LinkDiv onClick={() => Nav('/detail/menu')}>
+        <C.LinkDiv onClick={() => Nav(`/detail/${rId}/menu`)}>
           <C.Link>전체 메뉴 보기</C.Link>
           <C.Back src={orangeback} />
         </C.LinkDiv>

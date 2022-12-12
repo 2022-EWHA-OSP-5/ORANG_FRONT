@@ -12,8 +12,7 @@ import back from '../../assets/Navigate/Back.svg';
 
 const DetailPage = () => {
   const Nav = useNavigate();
-  //let { rId } = useParams();
-  const rId = 1;
+  let { id } = useParams();
   const [isTab, setIsTab] = useState({
     menu: true,
     review: false,
@@ -23,9 +22,9 @@ const DetailPage = () => {
   const [rest, setRest] = useState({});
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/restaurants/${rId}`, {
+      .get(`http://127.0.0.1:5000/restaurants/${id}`, {
         headers: {
-          Restaurant: rId,
+          Restaurant: id,
         },
       })
       .then(res => {
@@ -43,7 +42,7 @@ const DetailPage = () => {
         <BackButton onClick={() => Nav('/list')}>
           <Back src={back} />
         </BackButton>
-        <DetailHeader rId={rId} />
+        <DetailHeader rId={id} />
         <Divider />
         <TabContainer>
           <Tab
@@ -94,11 +93,11 @@ const DetailPage = () => {
         </TabContainer>
         <MainContainer>
           {isTab.info ? (
-            <DetailInfo rId={rId} />
+            <DetailInfo rId={id} />
           ) : isTab.menu ? (
-            <DetailMenu rId={rId} />
+            <DetailMenu rId={id} />
           ) : isTab.review ? (
-            <DetailReview rId={rId} />
+            <DetailReview rId={id} />
           ) : null}
         </MainContainer>
       </Wrapper>

@@ -11,8 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const BottomMenu = () => {
-  //let { rId } = useParams();
-  const rId = 1;
+  let { id } = useParams();
   const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
   const openRModal = () => {
@@ -31,9 +30,9 @@ const BottomMenu = () => {
   const [rest, setRest] = useState({});
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/restaurants/${rId}`, {
+      .get(`http://127.0.0.1:5000/restaurants/${id}`, {
         headers: {
-          Restaurant: rId,
+          Restaurant: id,
         },
       })
       .then(res => {
@@ -43,13 +42,14 @@ const BottomMenu = () => {
       .catch(err => console.log(err));
   }, []);
   var currentUser = JSON.parse(localStorage.getItem('id'));
-  const Bookmark = rId => {
+  const Bookmark = id => {
     axios
-      .post(`http://127.0.0.1:5000/restaurants/${rId}/bookmarks`, {
+      .post(`http://127.0.0.1:5000/restaurants/${id}/bookmarks`, {
         user_id: currentUser,
       })
       .then(res => {
         console.log(res.data);
+        alert('북마크에 추가되었습니다.');
       })
       .catch(err => console.log(err));
   };
@@ -57,7 +57,7 @@ const BottomMenu = () => {
     <>
       <BM.Rectangle>
         <BM.Home src={Home} onClick={() => Nav('/')} />
-        <BM.BookMark src={BookMark} onClick={() => Bookmark(rId)} />
+        <BM.BookMark src={BookMark} onClick={() => Bookmark(id)} />
         <BM.Share src={Share} onClick={() => openSModal()} />
         <BM.MyPage src={MyPage} onClick={() => Nav('/mypage')} />
         <Button
