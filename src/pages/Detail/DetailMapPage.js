@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import axios from 'axios';
 import { React, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useNavigate } from 'react-router-dom';
 import Map from '../../components/Map/Map';
@@ -8,25 +10,39 @@ import map from '../../assets/Detail/Map.svg';
 
 const DetailMapPage = () => {
   const Nav = useNavigate();
-  const address = '서울 서대문구 이화여대길 87 (대현동)';
+  let { id } = useParams();
+  const [rest, setRest] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${id}`, {
+        headers: {
+          Restaurant: id,
+        },
+      })
+      .then(res => {
+        //console.log(res.data.data);
+        setRest(res.data.data[0]);
+      })
+      .catch(err => console.log(err));
+  }, []);
   return (
     <>
-      <Map />
+      <Map addr={rest.address} />
       <Wrapper>
-        <BackButton onClick={() => Nav('/detail')}>
+        <BackButton onClick={() => Nav(-1)}>
           <Back src={back} />
         </BackButton>
         <InfoContainer>
           <div className="inner1">
             <MapIcon src={map} />
-            <Title>반서울</Title>
+            <Title>{rest.name}</Title>
           </div>
           <div className="inner2">
-            <Text>{address}</Text>
+            <Text>{rest.address}</Text>
             <Copy>
               <CopyToClipboard
-                text={address}
-                onCopy={() => console.log('주소 복사 성공, ', address)}
+                text={rest.address}
+                onCopy={() => console.log('주소 복사 성공, ', rest.address)}
               >
                 <p className="address">복사</p>
               </CopyToClipboard>

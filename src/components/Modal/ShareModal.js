@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
+import { useScript } from './KakaoScript.js';
 import styled from 'styled-components';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import kakaologo from '../../assets/Detail/ShareLogo/KakaoLogo.svg';
-import instagramlogo from '../../assets/Detail/ShareLogo/InstagramLogo.svg';
 import twitterlogo from '../../assets/Detail/ShareLogo/TwitterLogo.svg';
 import facebooklogo from '../../assets/Detail/ShareLogo/FacebookLogo.svg';
 import urlcopylogo from '../../assets/Detail/ShareLogo/URLCopyLogo.svg';
 
 const ShareModal = props => {
   const { open, close } = props;
+  const currentURL = window.location.href;
   useEffect(() => {
     document.body.style.cssText = `
           position: fixed;
@@ -20,6 +23,21 @@ const ShareModal = props => {
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
   }, []);
+
+  // kakao SDK import
+  const status = useScript('https://developers.kakao.com/sdk/js/kakao.js');
+  useEffect(() => {
+    if (status === 'ready' && window.Kakao) {
+      if (!window.Kakao.isInitialized()) {
+        window.Kakao.init('2715c2cd10d5bed4131327e7606d6e31');
+      }
+    }
+  }, [status]);
+  const handleKakaoButton = () => {
+    window.Kakao.Link.sendScrap({
+      requestUrl: currentURL,
+    });
+  };
 
   return (
     <>
@@ -34,13 +52,19 @@ const ShareModal = props => {
                   <MainText>공유 방법을 선택해주세요.</MainText>
                 </TextWrapper>
                 <ImgWrapper>
-                  <Img src={kakaologo} />
-                  <Img src={twitterlogo} />
-                  <Img src={facebooklogo} />
-                  <Img
-                    src={urlcopylogo}
-                    onClick={() => console.log('현재 path 복사')}
-                  />
+                  <Img src={kakaologo} onClick={() => handleKakaoButton()} />
+                  <TwitterShareButton url={currentURL}>
+                    <Img src={twitterlogo} />
+                  </TwitterShareButton>
+                  <FacebookShareButton url={currentURL}>
+                    <Img src={facebooklogo} />
+                  </FacebookShareButton>
+                  <CopyToClipboard
+                    text={currentURL}
+                    onCopy={() => console.log('주소 복사 성공, ', currentURL)}
+                  >
+                    <Img src={urlcopylogo} />
+                  </CopyToClipboard>
                 </ImgWrapper>
               </div>
             </Contents>

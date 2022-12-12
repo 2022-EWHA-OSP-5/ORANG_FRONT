@@ -25,12 +25,11 @@ function App() {
         <Route exact path="/signup" element={<SignUpPage />} />
         <Route exact path="/list" element={<ListPage />} />
         <Route exact path="/mypage" element={<MyPage />} />
-
-        <Route exact path="/detail" element={<DetailPage />} />
-        <Route exact path="/detail/menu" element={<DetailMenuPage />} />
-        <Route exact path="/detail/review" element={<DetailReviewPage />} />
-        <Route exact path="/detail/write" element={<AddReviewPage />} />
-        <Route exact path="/detail/map" element={<DetailMapPage />} />
+        <Route exact path="/detail/:id" element={<DetailPage />} />
+        <Route exact path="/detail/:id/menu" element={<DetailMenuPage />} />
+        <Route exact path="/detail/:id/review" element={<DetailReviewPage />} />
+        <Route exact path="/detail/:id/write" element={<AddReviewPage />} />
+        <Route exact path="/detail/:id/map" element={<DetailMapPage />} />
         <Route exact path="/add" element={<AddStorePage />} />
         <Route exact path="/add/menu" element={<AddMenuPage />} />
       </Routes>

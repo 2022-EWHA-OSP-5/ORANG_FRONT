@@ -26,7 +26,7 @@ const DetailHeader = ({ rId }) => {
         <>
           <H.HeaderWrapper>
             <H.MapButton>
-              <H.Map src={map} onClick={() => Nav('/detail/map')} />
+              <H.Map src={map} onClick={() => Nav(`/detail/${rId}/map`)} />
             </H.MapButton>
             <H.TextContainer>
               <div style={{ display: 'flex' }}>

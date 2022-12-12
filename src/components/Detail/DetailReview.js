@@ -41,7 +41,7 @@ const DetailReview = ({ rId }) => {
     <>
       <R.Top>
         <R.TopText>이 맛집에 다녀오셨다면?</R.TopText>
-        <R.ButtonContainer onClick={() => Nav('/detail/write')}>
+        <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
           <R.Write src={write} />
           <R.ButtonText>리뷰 작성하기</R.ButtonText>
         </R.ButtonContainer>
@@ -92,7 +92,7 @@ const DetailReview = ({ rId }) => {
           );
         })}
       <C.LinkContainer>
-        <C.LinkDiv onClick={() => Nav('/detail/review')}>
+        <C.LinkDiv onClick={() => Nav(`/detail/${rId}/review`)}>
           <C.Link>전체 리뷰 보기</C.Link>
           <C.Back src={orangeback} />
         </C.LinkDiv>
