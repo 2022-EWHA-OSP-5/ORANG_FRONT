@@ -48,7 +48,7 @@ const DetailMenuPage = () => {
               있습니다.
             </Text1>
             <Button
-              onClick={() => Nav('/add/menu')}
+              onClick={() => Nav(`/add/${id}/menu`)}
               children="추천 메뉴 추가하기"
               width="220px"
               arrow={true}
