@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/detail/:id/write" element={<AddReviewPage />} />
         <Route exact path="/detail/:id/map" element={<DetailMapPage />} />
         <Route exact path="/add" element={<AddStorePage />} />
-        <Route exact path="/add/menu" element={<AddMenuPage />} />
+        <Route exact path="/add/:id/menu" element={<AddMenuPage />} />
       </Routes>
     </BrowserRouter>
   );
