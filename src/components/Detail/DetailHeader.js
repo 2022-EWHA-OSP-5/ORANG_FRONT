@@ -19,7 +19,7 @@ const DetailHeader = ({ rId }) => {
         setRest(res.data.data[0]);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [rId]);
   return (
     <>
       {rest ? (

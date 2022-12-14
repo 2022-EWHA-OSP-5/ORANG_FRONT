@@ -42,7 +42,7 @@ const BottomMenu = () => {
         setRest(res.data.data[0]);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [id]);
   var currentUser = JSON.parse(localStorage.getItem('id'));
   const Bookmark = id => {
     if (isLogin()) {

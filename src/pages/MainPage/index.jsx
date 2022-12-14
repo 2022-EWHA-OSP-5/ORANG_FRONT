@@ -38,7 +38,7 @@ export default function MainPage() {
   useEffect(() => {
     // 리뷰 랜덤
     axios
-      .get('http://127.0.0.1:5000/home')
+      .get('http://192.168.219.112:5000/home')
       .then(res => {
         console.log('홈 api', res.data.data.reviews);
         setReviews(res.data.data.reviews);
@@ -47,7 +47,7 @@ export default function MainPage() {
 
     // 맛집 랜덤 추천
     axios
-      .get('http://127.0.0.1:5000/restaurants')
+      .get('http://192.168.219.112:5000/restaurants')
       .then(res => {
         const length = res.data.data.length;
         const random = lottoNum(length);

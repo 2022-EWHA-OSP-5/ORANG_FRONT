@@ -23,7 +23,7 @@ const DetailReview = ({ rId }) => {
         setReview(res.data.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [rId]);
   const ProfileImg = [orange1, orange2, orange3, orange4];
   const getName = username => {
     let originAuthor = username;
