@@ -33,7 +33,7 @@ const DetailMenuPage = () => {
             return (
               <M.Container>
                 <M.ImgRect>
-                  <M.Img src={menu.img} />
+                  <M.Img src={`http://127.0.0.1:5000/${menu.image}`} />
                 </M.ImgRect>
                 <M.TextContainer>
                   <M.Name>{menu.name}</M.Name>

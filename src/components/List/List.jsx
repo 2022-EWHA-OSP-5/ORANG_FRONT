@@ -2,7 +2,6 @@ import { Layout, Com } from './List.style';
 import Food from '../../assets/InstarCard/food1.png';
 import YellowStar from '../../assets/Star/YellowStar.svg';
 
-//import '../../../../../오랭서버2/static/image/menu/반서울.jpg';
 const List = ({ restaurant, onClick }) => {
   const imgPath = 'http://127.0.0.1:5000/';
 

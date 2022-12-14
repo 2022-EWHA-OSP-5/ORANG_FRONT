@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const DetailReview = ({ rId }) => {
+  const isLogin = () => !!localStorage.getItem('id');
+
   const Nav = useNavigate();
   const [review, setReview] = useState([]);
   useEffect(() => {
@@ -41,10 +43,18 @@ const DetailReview = ({ rId }) => {
     <>
       <R.Top>
         <R.TopText>이 맛집에 다녀오셨다면?</R.TopText>
-        <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
-          <R.Write src={write} />
-          <R.ButtonText>리뷰 작성하기</R.ButtonText>
-        </R.ButtonContainer>
+
+        {isLogin() ? (
+          <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
+            <R.Write src={write} />
+            <R.ButtonText>리뷰 작성하기</R.ButtonText>
+          </R.ButtonContainer>
+        ) : (
+          <R.ButtonContainer onClick={() => Nav('/login')}>
+            <R.Write src={write} />
+            <R.ButtonText>리뷰 작성하기</R.ButtonText>
+          </R.ButtonContainer>
+        )}
       </R.Top>
       {review &&
         review.map(review => {
@@ -67,7 +77,7 @@ const DetailReview = ({ rId }) => {
                   </div>
                 </R.Header>
                 <R.ImgRect>
-                  <R.Img src={review.image} />
+                  <R.Img src={`http://127.0.0.1:5000/${review.image}`} />
                 </R.ImgRect>
                 <R.Content>
                   {review.content && review.content.includes('\n') ? (

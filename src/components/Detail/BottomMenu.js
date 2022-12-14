@@ -11,6 +11,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const BottomMenu = () => {
+  const isLogin = () => !!localStorage.getItem('id');
+
   let { id } = useParams();
   const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
@@ -43,15 +45,19 @@ const BottomMenu = () => {
   }, []);
   var currentUser = JSON.parse(localStorage.getItem('id'));
   const Bookmark = id => {
-    axios
-      .post(`http://127.0.0.1:5000/restaurants/${id}/bookmarks`, {
-        user_id: currentUser,
-      })
-      .then(res => {
-        console.log(res.data);
-        alert('북마크에 추가되었습니다.');
-      })
-      .catch(err => console.log(err));
+    if (isLogin()) {
+      axios
+        .post(`http://127.0.0.1:5000/restaurants/${id}/bookmarks`, {
+          user_id: currentUser,
+        })
+        .then(res => {
+          console.log(res.data);
+          alert('북마크에 추가되었습니다.');
+        })
+        .catch(err => console.log(err));
+    } else {
+      alert('로그인이 필요합니다!');
+    }
   };
   return (
     <>
