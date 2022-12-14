@@ -71,7 +71,7 @@ export default function MyPage() {
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: '100px' }}>
       <GoBackBar TopBarName="마이페이지" center path="/" />
 
       <Layout.Profile>
@@ -137,8 +137,8 @@ export default function MyPage() {
                 </Layout.Title>
 
                 <Layout.Review>{review.content}</Layout.Review>
-                <Com.RevieImg>
-                  <img src={`http://127.0.0.1:5000/${review.image}`} />
+                <Com.RevieImg src={`http://127.0.0.1:5000/${review.image}`}>
+                  {/* <img src={`http://127.0.0.1:5000/${review.image}`} /> */}
                 </Com.RevieImg>
               </div>
             );
