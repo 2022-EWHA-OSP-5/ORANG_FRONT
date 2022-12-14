@@ -5,18 +5,14 @@ import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import GrayBtn from '../../components/Button/GrayBtn';
 import Star from '../../assets/Star/YellowStar.svg';
 
-import food from '../../assets/Food/food.png';
 import Right from '../../assets/Navigate/Right.svg';
 
 import List from '../../components/List/List';
-
-import data from './data.js';
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-import { review } from '../MainPage/data';
 
 export default function MyPage() {
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));

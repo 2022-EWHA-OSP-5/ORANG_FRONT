@@ -15,7 +15,7 @@ const List = ({ restaurant, onClick }) => {
 
         <Layout.Bottom>
           <img src={YellowStar} />
-          <p className="grade">{restaurant.score}</p>
+          <p className="grade">{restaurant.score.toString().substr(0, 3)}</p>
           <p className="category">{restaurant.category}</p>
         </Layout.Bottom>
       </Layout.TextBox>

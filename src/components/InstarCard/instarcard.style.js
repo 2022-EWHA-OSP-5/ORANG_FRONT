@@ -23,11 +23,9 @@ Layout.Title = styled.div`
   margin-left: 16px;
 
   .profile {
-    width: 31px;
-    height: 31px;
+    width: 30px;
+    height: 30px;
 
-    background: #d9d9d9;
-    border-radius: 17px;
     margin-right: 9px;
   }
 
