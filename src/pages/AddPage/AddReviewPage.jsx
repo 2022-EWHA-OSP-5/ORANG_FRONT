@@ -4,13 +4,28 @@ import BottomNavigateBar from '../../components/Navigate/BottomDeleteNavigateBar
 import styled from 'styled-components';
 import Button from '../../components/Detail/Button';
 import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { ReactComponent as Star } from '../../assets/AddBtn/Star.svg';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function AddReviewPage() {
   const navigate = useNavigate();
+  let { id } = useParams();
+  const [rest, setRest] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${id}`, {
+        headers: {
+          Restaurant: id,
+        },
+      })
+      .then(res => {
+        //console.log(res.data.data);
+        setRest(res.data.data[0]);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));
 
@@ -39,15 +54,14 @@ export default function AddReviewPage() {
       data.append('image', image);
 
       axios
-        .post('http://127.0.0.1:5000/restaurants/1/reviews', data, {
+        .post(`http://127.0.0.1:5000/restaurants/${id}/reviews`, data, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
         .then(res => {
           console.log(res);
-
-          navigate('/detail/review');
+          navigate(`/detail/${id}/review`);
         })
         .catch(err => console.log(err));
     }
@@ -58,7 +72,7 @@ export default function AddReviewPage() {
       <GoBackBar TopBarName="" path={-1} />
       <Layout.Blank />
       <Layout.Container>
-        <H2>반서울</H2>
+        <H2>{rest.name}</H2>
         <Layout.Blank2 />
         <Layout.Container2>
           <Layout.Button2

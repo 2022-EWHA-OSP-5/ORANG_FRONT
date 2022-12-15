@@ -67,7 +67,7 @@ const DetailReview = ({ rId }) => {
                   </div>
                 </R.Header>
                 <R.ImgRect>
-                  <R.Img src={review.image} />
+                  <R.Img src={`http://127.0.0.1:5000/${review.image}`} />
                 </R.ImgRect>
                 <R.Content>
                   {review.content && review.content.includes('\n') ? (
