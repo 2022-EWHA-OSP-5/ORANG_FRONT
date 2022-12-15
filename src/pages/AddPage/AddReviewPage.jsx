@@ -63,7 +63,6 @@ export default function AddReviewPage() {
         })
         .then(res => {
           console.log(res);
-
           navigate(`/detail/${id}/review`);
         })
         .catch(err => console.log(err));
