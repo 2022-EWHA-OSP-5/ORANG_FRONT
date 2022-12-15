@@ -18,7 +18,6 @@ const InstarCard = ({ review, gotoRestaurant }) => {
 
   var imgNum = Math.floor(Math.random() * 4);
 
-  console.log(imgNum);
   return (
     <Layout.Box>
       <Layout.Title>
@@ -30,8 +29,8 @@ const InstarCard = ({ review, gotoRestaurant }) => {
         <Layout.ImgShadow />
         <Layout.ImgText>
           <img scr={Quotation} className="quotation" />
-          <p className="review_title">{review.content}</p>
-          <p className="review">{review.content}</p>
+          <p className="review_title">{review.content.substr(0, 20)}</p>
+          <p className="review">{review.content.substr(20)}</p>
         </Layout.ImgText>
       </Layout.ImgSection>
 
