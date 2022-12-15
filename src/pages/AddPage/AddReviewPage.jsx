@@ -11,8 +11,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export default function AddReviewPage() {
   const navigate = useNavigate();
+  var currentUserInfo = JSON.parse(localStorage.getItem('id'));
+
+  var Formdata = require('form-data');
+  const data = new Formdata();
   let { id } = useParams();
   const [rest, setRest] = useState({});
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${id}`, {
@@ -26,11 +31,6 @@ export default function AddReviewPage() {
       })
       .catch(err => console.log(err));
   }, []);
-
-  var currentUserInfo = JSON.parse(localStorage.getItem('id'));
-
-  var Formdata = require('form-data');
-  const data = new Formdata();
 
   const [isBtn, setIsBtn] = useState({
     one: false,
@@ -47,6 +47,8 @@ export default function AddReviewPage() {
   const UploadReview = () => {
     if (score == 0) {
       alert('별점을 남겨주세요.');
+    } else if (image == null) {
+      alert('사진을 업로드해주세요.');
     } else {
       data.append('user_id', currentUserInfo);
       data.append('content', content);
@@ -61,6 +63,7 @@ export default function AddReviewPage() {
         })
         .then(res => {
           console.log(res);
+
           navigate(`/detail/${id}/review`);
         })
         .catch(err => console.log(err));
@@ -197,6 +200,11 @@ export default function AddReviewPage() {
             }
           }}
         />
+        <Div>
+          {image ? (
+            <input type="image" src={URL.createObjectURL(image)} />
+          ) : null}
+        </Div>
       </Layout.Container>
 
       <Layout.Blank />
@@ -227,4 +235,17 @@ const H2 = styled.div`
   text-align: center;
   font-size: 32px;
   font-weight: 700px;
+`;
+
+const Div = styled.div`
+  display: inline-block;
+  clear: both;
+  margin-left: 7px;
+  input {
+    width: 85px;
+    height: 88.5px;
+    object-fit: cover;
+    border: 2.5px solid #ff3d00;
+    border-radius: 10%;
+  }
 `;

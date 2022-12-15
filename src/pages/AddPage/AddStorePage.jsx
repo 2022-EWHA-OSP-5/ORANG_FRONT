@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
 
 export default function AddStorePage() {
 
@@ -60,24 +61,17 @@ export default function AddStorePage() {
           },
         })
         .then(res => {
-          console.log(res);
-  
-          var StoreInfo = res.data.data;
-          localStorage.setItem('store_id', JSON.stringify(StoreInfo.id));
-  
-          navigate('/add/menu');
+          console.log(res);  
+          navigate(`/add/${res.data.data.id}/menu`);
         })
         .catch(err => console.log(err));
 
     }
     };
 
-
-
-
   return (
     <Layout.Display>
-        <GoBackBar TopBarName="맛집 등록하기" path="/list" onClick={() => {}}/>
+        <GoBackBar TopBarName="맛집 등록하기" path={-1} onClick={() => {}}/>
         <Layout.Container>
           <Layout.Blank2/>
             <Layout.HeadText><Star>숨겨진 맛집</Star>을 등록해 벗들에게 공유해주세요!</Layout.HeadText>
@@ -130,7 +124,14 @@ export default function AddStorePage() {
                 </Layout.Input>
                 <Layout.Blank2/>
                 <Layout.Input>
-                <StoreInput InputType="식당 대표 사진"  onChange={e=>{e.preventDefault(); if(e.target.files){ setimage(e.target.files[0]);}}}/>
+                <StoreInput InputType="식당 대표 사진"/>
+                <label for="file-upload"><img src={RedAddBtn}></img></label>
+                <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} 
+                                    onChange={e=>{e.preventDefault();
+                                    if(e.target.files){
+                                      setimage(e.target.files[0]);
+                                    }}}/>
+                <Div>{image ? (<input type="image" src={URL.createObjectURL(image)}/>) : null}</Div>
                 </Layout.Input>
             </Layout.InputBox>
             <Layout.Blank/>
@@ -156,3 +157,17 @@ const Star = styled.span`
 font-weight: 550;
 color: #FF0000;
 `;
+
+const Div = styled.div`
+display:inline-block;
+clear:both;
+margin-left: 7px;
+input {
+    width: 85px;
+    height: 88.5px;
+    object-fit: cover;
+    border:2.5px solid #FF3D00;
+    border-radius: 10%;
+}
+
+`

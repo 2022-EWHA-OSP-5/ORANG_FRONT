@@ -1,6 +1,5 @@
 import { Input } from './Input.style';
 import styled from 'styled-components';
-import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
 
 const MenuInput = ({ InputType, onChange }) => {
   const InputTypes = [
@@ -17,9 +16,6 @@ const MenuInput = ({ InputType, onChange }) => {
             return (
               <>
               <Box><Text>{type.name}</Text><Star>*</Star></Box>
-              <label for="file-upload"><img src={RedAddBtn}></img></label>
-              <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} onChange={onChange}/>
-              
               </>
             );
           }
