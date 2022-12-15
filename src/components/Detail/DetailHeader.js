@@ -21,7 +21,7 @@ const DetailHeader = () => {
         setRest(res.data.data[0]);
       })
       .catch(err => console.log(err));
-  }, [rId]);
+  }, [id]);
   return (
     <>
       {rest ? (

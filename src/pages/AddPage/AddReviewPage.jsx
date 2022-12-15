@@ -47,8 +47,8 @@ export default function AddReviewPage() {
   const UploadReview = () => {
     if (score == 0) {
       alert('별점을 남겨주세요.');
-    }else if(image == null){
-      alert("사진을 업로드해주세요.")
+    } else if (image == null) {
+      alert('사진을 업로드해주세요.');
     } else {
       data.append('user_id', currentUserInfo);
       data.append('content', content);
@@ -199,7 +199,11 @@ export default function AddReviewPage() {
             }
           }}
         />
-        <Div>{image ? (<input type="image" src={URL.createObjectURL(image)}/>) : null}</Div>
+        <Div>
+          {image ? (
+            <input type="image" src={URL.createObjectURL(image)} />
+          ) : null}
+        </Div>
       </Layout.Container>
 
       <Layout.Blank />
@@ -233,15 +237,14 @@ const H2 = styled.div`
 `;
 
 const Div = styled.div`
-display:inline-block;
-clear:both;
-margin-left: 7px;
-input {
+  display: inline-block;
+  clear: both;
+  margin-left: 7px;
+  input {
     width: 85px;
     height: 88.5px;
     object-fit: cover;
-    border:2.5px solid #FF3D00;
+    border: 2.5px solid #ff3d00;
     border-radius: 10%;
-}
-
-`
+  }
+`;
