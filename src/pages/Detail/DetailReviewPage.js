@@ -16,7 +16,7 @@ const DetailReviewPage = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:5000/restaurants/${id}/reviews`)
+      .get(`http://127.0.0.1:5000/restaurants/${id}/reviews/all`)
       .then(res => {
         console.log(res.data);
         setReview(res.data.data);
