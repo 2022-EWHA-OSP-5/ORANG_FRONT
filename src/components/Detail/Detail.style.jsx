@@ -99,6 +99,12 @@ H.Title = styled.p`
   margin-bottom: 10px;
 `;
 
+H.ScoreInfo = styled.div`
+  display: flex;
+  margin-top: 17px;
+  margin-left: 10px;
+`;
+
 H.Address = styled.p`
   font-size: 15px;
   font-weight: 400;
@@ -255,9 +261,8 @@ R.Top = styled.div`
 `;
 
 R.TopText = styled.p`
-  position: absolute;
-  left: 30px;
   font-size: 12px;
+  margin-right: 20px;
 `;
 
 R.ButtonContainer = styled.div`
@@ -268,8 +273,6 @@ R.ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  right: 0;
 `;
 
 R.Write = styled.img`
