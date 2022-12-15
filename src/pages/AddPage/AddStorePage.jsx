@@ -94,7 +94,7 @@ export default function AddStorePage() {
 
                 <Layout.Button3 style={{ background: isBtn.sinchonstation ? '#FF3D00' : 'white',}}
                     onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: true, ewhastation: false }); setlocation('신촌기차역')}}>
-                    <p style={{color: isBtn.sinchonstation ? 'white' : '#FF3D00', }}>신촌기차역</p></Layout.Button3>
+                    <p style={{color: isBtn.sinchonstation ? 'white' : '#FF3D00', }}>신기역</p></Layout.Button3>
 
                 <Layout.Button3 style={{background: isBtn.ewhastation ? '#FF3D00' : 'white',}}
                     onClick={() => {setIsBtn({ front: false, back: false, sinchonstation: false, ewhastation: true }); setlocation('이대역')}}>

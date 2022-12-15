@@ -34,12 +34,17 @@ const DetailPage = () => {
       })
       .catch(err => console.log(err));
   }, []);
-
   return (
     <>
       <Wrapper>
         <MainImage>
-          <MainImg src={'' === '' ? mainimg : null} />
+          <MainImg
+            src={
+              rest.image === ''
+                ? mainimg
+                : `http://127.0.0.1:5000/${rest.image}`
+            }
+          />
         </MainImage>
         <BackButton onClick={() => Nav('/list')}>
           <Back src={back} />
