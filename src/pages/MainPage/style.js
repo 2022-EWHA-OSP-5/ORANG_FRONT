@@ -71,6 +71,7 @@ Layout.SwiperTextBox = styled.div`
 Layout.InstarSlider = styled.div`
   display: flex;
   overflow: scroll;
+  overflow-y: hidden;
 
   margin-top: 20px;
   margin-bottom: 36px;

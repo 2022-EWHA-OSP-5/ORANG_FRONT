@@ -20,6 +20,7 @@ const DetailPage = () => {
   });
   const TabString = ['메뉴', '리뷰', '정보'];
   const [rest, setRest] = useState({});
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${id}`, {
@@ -33,6 +34,7 @@ const DetailPage = () => {
       })
       .catch(err => console.log(err));
   }, []);
+
   return (
     <>
       <Wrapper>
@@ -44,6 +46,7 @@ const DetailPage = () => {
         </BackButton>
         <DetailHeader rId={id} />
         <Divider />
+
         <TabContainer>
           <Tab
             style={{
