@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const DetailReview = ({ rId }) => {
+  const isLogin = () => !!localStorage.getItem('id');
+
   const Nav = useNavigate();
   const [review, setReview] = useState([]);
   useEffect(() => {
@@ -21,7 +23,7 @@ const DetailReview = ({ rId }) => {
         setReview(res.data.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [rId]);
   const ProfileImg = [orange1, orange2, orange3, orange4];
   const getName = username => {
     let originAuthor = username;
@@ -41,10 +43,18 @@ const DetailReview = ({ rId }) => {
     <>
       <R.Top>
         <R.TopText>이 맛집에 다녀오셨다면?</R.TopText>
-        <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
-          <R.Write src={write} />
-          <R.ButtonText>리뷰 작성하기</R.ButtonText>
-        </R.ButtonContainer>
+
+        {isLogin() ? (
+          <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
+            <R.Write src={write} />
+            <R.ButtonText>리뷰 작성하기</R.ButtonText>
+          </R.ButtonContainer>
+        ) : (
+          <R.ButtonContainer onClick={() => Nav('/login')}>
+            <R.Write src={write} />
+            <R.ButtonText>리뷰 작성하기</R.ButtonText>
+          </R.ButtonContainer>
+        )}
       </R.Top>
       {review &&
         review.map(review => {

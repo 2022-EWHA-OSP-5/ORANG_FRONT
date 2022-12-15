@@ -5,8 +5,19 @@ const Layout = {};
 Layout.Display = styled.div``;
 
 Layout.SelectBox = styled.div`
+  flex-shrink: 0;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+
   display: flex;
-  margin: 25px 0 0px 35px;
+
+  margin-top: 25px;
+  margin-left: 35px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 Layout.ListBox = styled.div`

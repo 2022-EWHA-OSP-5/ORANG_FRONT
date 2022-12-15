@@ -2,7 +2,6 @@ import { Layout, Com } from './List.style';
 import Food from '../../assets/InstarCard/food1.png';
 import YellowStar from '../../assets/Star/YellowStar.svg';
 
-//import '../../../../../오랭서버2/static/image/menu/반서울.jpg';
 const List = ({ restaurant, onClick }) => {
   const imgPath = 'http://127.0.0.1:5000/';
 
@@ -16,7 +15,7 @@ const List = ({ restaurant, onClick }) => {
 
         <Layout.Bottom>
           <img src={YellowStar} />
-          <p className="grade">{restaurant.score}</p>
+          <p className="grade">{restaurant.score.toString().substr(0, 3)}</p>
           <p className="category">{restaurant.category}</p>
         </Layout.Bottom>
       </Layout.TextBox>

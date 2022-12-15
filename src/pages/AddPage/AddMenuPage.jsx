@@ -5,9 +5,9 @@ import MenuInput from '../../components/Input/MenuInput';
 import Button from '../../components/Detail/Button';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { upload } from '@testing-library/user-event/dist/upload';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import RedAddBtn from '../../assets/AddBtn/RedAddBtn.svg';
 
 export default function SignUpPage() {
 
@@ -15,10 +15,26 @@ export default function SignUpPage() {
 
   var Formdata = require('form-data');
   const data = new Formdata();
+  let { id } = useParams();
 
   const [name, setname] = useState('');
   const [price, setprice] = useState('');
   const [uploadFile, setuploadFile] = useState(null);
+
+  const [rest, setRest] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:5000/restaurants/${id}`, {
+        headers: {
+          Restaurant: id,
+        },
+      })
+      .then(res => {
+        //console.log(res.data.data);
+        setRest(res.data.data[0]);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const UploadMenu = () => {
     if (name == ''){
@@ -33,7 +49,7 @@ export default function SignUpPage() {
       data.append('image', uploadFile);
 
       axios
-        .post('http://127.0.0.1:5000/restaurants/1/menus', data, {
+        .post(`http://127.0.0.1:5000/restaurants/${id}/menus`, data, {
           headers: {
             'Content-Type' : 'multipart/form-data',
           },
@@ -41,7 +57,7 @@ export default function SignUpPage() {
         .then(res => {
           console.log(res);
   
-          navigate('/detail');
+          navigate(`/detail/${id}/menu`);
         })
         .catch(err => console.log(err));
     }
@@ -50,11 +66,11 @@ export default function SignUpPage() {
 
   return (
     <Layout.Display>
-        <GoBackBar TopBarName="메뉴 등록하기" path="/detail" onClick={() => {}}/>
+        <GoBackBar TopBarName="메뉴 등록하기" path={-1} onClick={() => {}}/>
         <Layout.Container>
             <Layout.Blank2/>
-            <Layout.HeadText>'소녀방앗간'에서의 식사는 만족스러우셨나요?</Layout.HeadText>
-            <Layout.HeadText>벗들에게 '소녀방앗간'의 메뉴를 추천해주세요!</Layout.HeadText>
+            <Layout.HeadText>'{rest.name}'에서의 식사는 만족스러우셨나요?</Layout.HeadText>
+            <Layout.HeadText>벗들에게 '{rest.name}'의 메뉴를 추천해주세요!</Layout.HeadText>
 
             <Layout.InputBox>
                 <Layout.Input>
@@ -66,12 +82,14 @@ export default function SignUpPage() {
                 </Layout.Input>
                 <Layout.Blank/>
                 <Layout.Input>
-                <MenuInput InputType="메뉴 사진" 
-                        onChange={e=>{e.preventDefault();
-                                  if(e.target.files){
-                                    setuploadFile(e.target.files[0]);
-                                  }}}/>
-                {uploadFile ? (<input type="image" src={uploadFile}/>) : null}
+                <MenuInput InputType="메뉴 사진"/>
+                <label for="file-upload"><img src={RedAddBtn}></img></label>
+                <input type = "file" id = "file-upload" accept="image/*" style={{display:"none"}} 
+                                    onChange={e=>{e.preventDefault();
+                                    if(e.target.files){
+                                      setuploadFile(e.target.files[0]);
+                                    }}}/>
+                <Div>{uploadFile ? (<input type="image" src={URL.createObjectURL(uploadFile)}/>) : null}</Div>
                 </Layout.Input>
             </Layout.InputBox>
             <Layout.Blank/>
@@ -109,3 +127,17 @@ align-item: center;
 justify-content: center;
 display: flex;
 `;
+
+const Div = styled.div`
+display:inline-block;
+clear:both;
+margin-left: 5px;
+input {
+    width: 85px;
+    height: 88.5px;
+    object-fit: cover;
+    border:2.5px solid #FF3D00;
+    border-radius: 10%;
+}
+
+`

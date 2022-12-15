@@ -5,18 +5,14 @@ import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import GrayBtn from '../../components/Button/GrayBtn';
 import Star from '../../assets/Star/YellowStar.svg';
 
-import food from '../../assets/Food/food.png';
 import Right from '../../assets/Navigate/Right.svg';
 
 import List from '../../components/List/List';
-
-import data from './data.js';
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-import { review } from '../MainPage/data';
 
 export default function MyPage() {
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));
@@ -75,7 +71,7 @@ export default function MyPage() {
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: '100px' }}>
       <GoBackBar TopBarName="마이페이지" center path="/" />
 
       <Layout.Profile>
@@ -141,8 +137,8 @@ export default function MyPage() {
                 </Layout.Title>
 
                 <Layout.Review>{review.content}</Layout.Review>
-                <Com.RevieImg>
-                  <img src={`http://127.0.0.1:5000/${review.image}`} />
+                <Com.RevieImg src={`http://127.0.0.1:5000/${review.image}`}>
+                  {/* <img src={`http://127.0.0.1:5000/${review.image}`} /> */}
                 </Com.RevieImg>
               </div>
             );

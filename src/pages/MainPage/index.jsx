@@ -7,8 +7,6 @@ import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import Right from '../../assets/Navigate/Right.svg';
 import CustomSwiper from '../../components/Swiper/CustomSwiper';
 
-import { profile, review, restaurant, restaurants } from './data';
-
 import axios from 'axios';
 
 import { useState, useEffect } from 'react';
@@ -92,9 +90,7 @@ export default function MainPage() {
 
           return (
             <InstarCard
-              profile={profile[0]}
               review={review}
-              restaurant={restaurant[0]}
               gotoRestaurant={gotoRestaurant}
             ></InstarCard>
           );

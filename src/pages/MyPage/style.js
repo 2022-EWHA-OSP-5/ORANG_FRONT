@@ -174,13 +174,14 @@ Com.Num = styled.p`
 `;
 
 Com.RevieImg = styled.div`
-  width: 100%;
+  height: 217px;
+
+  margin: 10px 22px 0 22px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
 
-  img {
-    border-radius: 8px;
-  }
+  background: ${props => `url(${props.src}) no-repeat center/100%  `};
 `;
 
 Com.gotoDetail = styled.p`

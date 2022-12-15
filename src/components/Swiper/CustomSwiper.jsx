@@ -1,4 +1,5 @@
 import Img1 from '../../assets/Swiper/img1.png';
+import Img2 from '../../assets/Swiper/img2.jpg';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
@@ -27,16 +28,16 @@ function CustomSwiper() {
         autoplay={{ delay: 3000 }}
       >
         <SwiperSlide>
-          <div id="img" src={Img1} />
+          <div id="img1" />
         </SwiperSlide>
         <SwiperSlide>
-          <div id="img" src={Img1} />
+          <div id="img2" />
         </SwiperSlide>
         <SwiperSlide>
-          <div id="img" src={Img1} />
+          <div id="img3" />
         </SwiperSlide>
         <SwiperSlide>
-          <div id="img" src={Img1} />
+          <div id="img4" />
         </SwiperSlide>
       </Swiper>
     </div>

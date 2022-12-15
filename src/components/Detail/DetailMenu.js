@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { C, M } from './Detail.style';
-import menuimg from '../../assets/Detail/MenuImg.svg';
 import orangeback from '../../assets/Detail/OrangeBack.svg';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -16,7 +15,7 @@ const DetailMenu = ({ rId }) => {
         setMenu(res.data.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [rId]);
   return (
     <>
       <C.Title>대표 메뉴</C.Title>
