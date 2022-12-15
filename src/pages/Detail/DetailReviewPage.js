@@ -24,17 +24,20 @@ const DetailReviewPage = () => {
       .catch(err => console.log(err));
   }, []);
   const ProfileImg = [orange1, orange2, orange3, orange4];
-  let originAuthor = 'ops1035';
-  let maskedAuthor;
-  if (originAuthor === '') {
-    maskedAuthor = originAuthor;
-  } else {
-    if (originAuthor.length < 3) {
-      maskedAuthor = originAuthor.replace(/(?<=.{1})./gi, '*');
+  const getName = username => {
+    let originAuthor = username;
+    let maskedAuthor;
+    if (originAuthor === '') {
+      maskedAuthor = originAuthor;
     } else {
-      maskedAuthor = originAuthor.replace(/(?<=.{3})./gi, '*');
+      if (originAuthor.length < 3) {
+        maskedAuthor = originAuthor.replace(/(?<=.{1})./gi, '*');
+      } else {
+        maskedAuthor = originAuthor.replace(/(?<=.{2})./gi, '*');
+      }
     }
-  }
+    return maskedAuthor;
+  };
   return (
     <>
       <GoBackBar TopBarName="전체 리뷰" path={-1} />
@@ -54,7 +57,7 @@ const DetailReviewPage = () => {
                         </div>
                       </R.ProfileCircle>
                       <div>
-                        <R.Author>{maskedAuthor}</R.Author>
+                        <R.Author>{getName(review.username)}</R.Author>
                         <div style={{ display: 'flex' }}>
                           <R.StarImg src={starimg} />
                           <R.Star>{review.score.toFixed(1)}</R.Star>
