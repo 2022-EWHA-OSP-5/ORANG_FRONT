@@ -13,11 +13,13 @@ import back from '../../assets/Navigate/Back.svg';
 const DetailPage = () => {
   const Nav = useNavigate();
   let { id } = useParams();
+
   const [isTab, setIsTab] = useState({
     menu: true,
     review: false,
     info: false,
   });
+
   const TabString = ['메뉴', '리뷰', '정보'];
   const [rest, setRest] = useState({});
 
