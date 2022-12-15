@@ -22,6 +22,12 @@ const DetailHeader = () => {
       })
       .catch(err => console.log(err));
   }, [id]);
+  const getScore = () => {
+    if (rest.score === 0) return '-';
+    else {
+      return rest.score.toFixed(1);
+    }
+  };
   return (
     <>
       {rest ? (
@@ -35,13 +41,13 @@ const DetailHeader = () => {
                 <H.Title>{rest.name}</H.Title>
                 <H.ScoreInfo>
                   <R.StarImg src={starimg} />
-                  {rest.score ? (
+                  {rest.score === undefined ? null : (
                     <>
                       <R.Star>
-                        {rest.score.toFixed(1)} ({rest.review_count})
+                        {getScore()} ({rest.review_count})
                       </R.Star>
                     </>
-                  ) : null}
+                  )}
                 </H.ScoreInfo>
               </div>
               <H.Address>{rest.address}</H.Address>
