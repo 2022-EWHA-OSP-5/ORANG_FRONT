@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 
 export default function ListPage() {
   const [filter, setFilter] = useState([
-    { id: 1, value: '한식', selected: true },
+    { id: 1, value: '한식', selected: false },
     { id: 2, value: '아시아', selected: false },
     { id: 3, value: '일식', selected: false },
     { id: 4, value: '양식', selected: false },
@@ -22,7 +22,11 @@ export default function ListPage() {
   const [restaurants, setRestaurants] = useState([]);
   const navigate = useNavigate();
 
+  const [allrest, setAllrest] = useState([]);
+
   const SelectFilter = id => {
+    setAllrest([]);
+
     setFilter(
       filter.map(f =>
         f.id === id ? { ...f, selected: true } : { ...f, selected: false },
@@ -31,8 +35,16 @@ export default function ListPage() {
   };
 
   useEffect(() => {
-    console.log(filter);
+    axios
+      .get(`http://127.0.0.1:5000/restaurants`)
+      .then(res => {
+        setAllrest(res.data.data);
+        console.log('모든', res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
+  useEffect(() => {
     filter.map(f => {
       if (f.selected === true) {
         axios
@@ -52,6 +64,17 @@ export default function ListPage() {
           return <SelectBox select={f} onClick={() => SelectFilter(f.id)} />;
         })}
       </Layout.SelectBox>
+
+      <Layout.ListBox>
+        {allrest.map(res => {
+          return (
+            <List
+              restaurant={res}
+              onClick={() => navigate(`/detail/${res.id}`)}
+            />
+          );
+        })}
+      </Layout.ListBox>
 
       <Layout.ListBox>
         {restaurants.map(res => {
