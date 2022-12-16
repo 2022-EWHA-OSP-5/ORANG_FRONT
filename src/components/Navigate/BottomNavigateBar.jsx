@@ -4,10 +4,15 @@ import Person from '../../assets/Navigate/Person.svg';
 import Plus from '../../assets/Navigate/Plus.svg';
 
 import { useNavigate } from 'react-router-dom';
+
+import React, { useCallback } from 'react';
+
 const BottomNavigateBar = () => {
   const navigate = useNavigate();
 
-  const isLogin = () => !!localStorage.getItem('id');
+  const isLogin = useCallback(() => {
+    return !!localStorage.getItem('id');
+  }, []);
 
   return (
     <Bottom.Rectangle>
@@ -24,4 +29,4 @@ const BottomNavigateBar = () => {
   );
 };
 
-export default BottomNavigateBar;
+export default React.memo(BottomNavigateBar);

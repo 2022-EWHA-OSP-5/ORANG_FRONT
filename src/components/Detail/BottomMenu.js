@@ -4,7 +4,7 @@ import Share from '../../assets/Detail/Share.svg';
 import MyPage from '../../assets/Navigate/MyPage.svg';
 import { BM } from './Detail.style';
 import Button from './Button';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReserveModal from '../Modal/ReserveModal';
 import ShareModal from '../Modal/ShareModal';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -16,20 +16,27 @@ const BottomMenu = () => {
   let { id } = useParams();
   const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
+
   const openRModal = () => {
     isRModal(true);
   };
+
   const closeRModal = () => {
     isRModal(false);
   };
+
   const [SModal, isSModal] = useState(false);
+
   const openSModal = () => {
     isSModal(true);
   };
+
   const closeSModal = () => {
     isSModal(false);
   };
+
   const [rest, setRest] = useState({});
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${id}`, {
@@ -43,6 +50,7 @@ const BottomMenu = () => {
       })
       .catch(err => console.log(err));
   }, [id]);
+
   var currentUser = JSON.parse(localStorage.getItem('id'));
   const Bookmark = id => {
     if (isLogin()) {
@@ -88,4 +96,4 @@ const BottomMenu = () => {
   );
 };
 
-export default BottomMenu;
+export default React.memo(BottomMenu);

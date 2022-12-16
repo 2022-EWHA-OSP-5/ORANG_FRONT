@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 const GrayBtn = ({ children, onClick }) => {
   return <Button onClick={onClick}>{children}</Button>;
@@ -25,4 +26,4 @@ const Button = styled.div`
   color: black;
 `;
 
-export default GrayBtn;
+export default React.memo(GrayBtn);

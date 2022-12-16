@@ -10,8 +10,9 @@ import BottomMenu from '../../components/Detail/BottomMenu';
 import mainimg from '../../assets/Detail/DetailMainImg.svg';
 import back from '../../assets/Navigate/Back.svg';
 
+import InfoBox from './test';
+
 const DetailPage = () => {
-  const Nav = useNavigate();
   let { id } = useParams();
 
   const [isTab, setIsTab] = useState({
@@ -39,7 +40,8 @@ const DetailPage = () => {
   return (
     <>
       <Wrapper>
-        <MainImage>
+        <InfoBox rest={rest} id={id} />
+        {/* <MainImage>
           <MainImg
             src={
               rest.image === ''
@@ -48,11 +50,12 @@ const DetailPage = () => {
             }
           />
         </MainImage>
+
         <BackButton onClick={() => Nav('/list')}>
           <Back src={back} />
         </BackButton>
         <DetailHeader rId={id} />
-        <Divider />
+        <Divider /> */}
 
         <TabContainer>
           <Tab

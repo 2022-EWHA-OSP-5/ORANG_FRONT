@@ -2,6 +2,9 @@ import { B } from './Nav.style';
 import Back from '../../assets/Navigate/Back.svg';
 
 import { useNavigate } from 'react-router-dom';
+
+import React from 'react';
+
 const GoBackBar = ({ TopBarName, center, path }) => {
   const navigate = useNavigate();
 
@@ -9,6 +12,7 @@ const GoBackBar = ({ TopBarName, center, path }) => {
     navigate(path);
     console.log('이동');
   };
+
   return (
     <B.Rectangle>
       {center ? (
@@ -26,4 +30,4 @@ const GoBackBar = ({ TopBarName, center, path }) => {
   );
 };
 
-export default GoBackBar;
+export default React.memo(GoBackBar);

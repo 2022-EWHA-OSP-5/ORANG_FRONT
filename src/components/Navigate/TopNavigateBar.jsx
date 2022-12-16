@@ -3,6 +3,9 @@ import BookMark from '../../assets/Navigate/BookMark.svg';
 import Logo from '../../assets/Navigate/Logo.svg';
 import Orang from '../../assets/Navigate/Orang.svg';
 import { useNavigate } from 'react-router-dom';
+
+import React from 'react';
+
 const TopNavigateBar = () => {
   const navigate = useNavigate();
 
@@ -22,4 +25,4 @@ const TopNavigateBar = () => {
   );
 };
 
-export default TopNavigateBar;
+export default React.memo(TopNavigateBar);

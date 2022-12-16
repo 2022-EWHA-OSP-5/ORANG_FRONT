@@ -1,5 +1,4 @@
 import { Layout, Com } from './style';
-import Profil from '../../assets/Profile/Profile.svg';
 import GoBackBar from '../../components/Navigate/GoBackBar';
 import BottomNavigateBar from '../../components/Navigate/BottomNavigateBar';
 import GrayBtn from '../../components/Button/GrayBtn';
@@ -9,10 +8,12 @@ import Right from '../../assets/Navigate/Right.svg';
 
 import List from '../../components/List/List';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
+
+import UserInfo from './userInfo';
 
 export default function MyPage() {
   var currentUserInfo = JSON.parse(localStorage.getItem('id'));
@@ -49,11 +50,11 @@ export default function MyPage() {
   var userName = JSON.parse(localStorage.getItem('username'));
   console.log(userName);
 
-  const LogOut = () => {
+  const LogOut = useCallback(() => {
     window.localStorage.clear();
     alert('로그아웃 하시겠습니까?');
     navigate('/');
-  };
+  }, []);
 
   const [activeBtn, setActiveBtn] = useState([
     { id: 1, name: '저장한 맛집', active: true },
@@ -74,12 +75,9 @@ export default function MyPage() {
     <div style={{ paddingBottom: '100px' }}>
       <GoBackBar TopBarName="마이페이지" center path="/" />
 
-      <Layout.Profile>
-        <img src={Profil} className="profile" />
-        <p className="username">{userName} 님</p>
-      </Layout.Profile>
+      <UserInfo userName={userName}></UserInfo>
 
-      <GrayBtn onClick={() => LogOut()}>로그아웃</GrayBtn>
+      <GrayBtn onClick={LogOut}>로그아웃</GrayBtn>
 
       <Com.Hr />
 
