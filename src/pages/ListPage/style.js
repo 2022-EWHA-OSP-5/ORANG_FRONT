@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const Layout = {};
 
-Layout.Display = styled.div``;
+Layout.Display = styled.div`
+  padding-top: 53px;
+`;
 
 Layout.SelectBox = styled.div`
   flex-shrink: 0;

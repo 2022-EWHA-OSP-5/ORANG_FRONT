@@ -3,6 +3,10 @@ import styled, { css } from 'styled-components';
 const N = {};
 
 N.Rectangle = styled.div`
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+
   width: 100%;
   height: 53px;
   background-color: white;
