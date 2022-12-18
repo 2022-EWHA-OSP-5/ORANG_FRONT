@@ -18,7 +18,7 @@ const DetailReviewPage = () => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${id}/reviews/all`)
       .then(res => {
-        console.log(res.data);
+        //console.log(res.data);
         setReview(res.data.data);
       })
       .catch(err => console.log(err));

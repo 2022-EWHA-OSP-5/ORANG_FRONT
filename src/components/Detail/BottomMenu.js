@@ -12,31 +12,23 @@ import axios from 'axios';
 
 const BottomMenu = () => {
   const isLogin = () => !!localStorage.getItem('id');
-
   let { id } = useParams();
   const Nav = useNavigate();
   const [RModal, isRModal] = useState(false);
-
   const openRModal = () => {
     isRModal(true);
   };
-
   const closeRModal = () => {
     isRModal(false);
   };
-
   const [SModal, isSModal] = useState(false);
-
   const openSModal = () => {
     isSModal(true);
   };
-
   const closeSModal = () => {
     isSModal(false);
   };
-
   const [rest, setRest] = useState({});
-
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${id}`, {
@@ -50,7 +42,6 @@ const BottomMenu = () => {
       })
       .catch(err => console.log(err));
   }, [id]);
-
   var currentUser = JSON.parse(localStorage.getItem('id'));
   const Bookmark = id => {
     if (isLogin()) {
@@ -59,7 +50,7 @@ const BottomMenu = () => {
           user_id: currentUser,
         })
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
           alert('북마크에 추가되었습니다.');
         })
         .catch(err => console.log(err));

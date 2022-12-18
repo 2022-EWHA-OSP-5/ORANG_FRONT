@@ -12,14 +12,13 @@ import axios from 'axios';
 
 const DetailReview = ({ rId }) => {
   const isLogin = () => !!localStorage.getItem('id');
-
   const Nav = useNavigate();
   const [review, setReview] = useState([]);
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:5000/restaurants/${rId}/reviews`)
       .then(res => {
-        console.log(res.data);
+        //console.log(res.data);
         setReview(res.data.data);
       })
       .catch(err => console.log(err));
@@ -43,7 +42,6 @@ const DetailReview = ({ rId }) => {
     <>
       <R.Top>
         <R.TopText>이 맛집에 다녀오셨다면?</R.TopText>
-
         {isLogin() ? (
           <R.ButtonContainer onClick={() => Nav(`/detail/${rId}/write`)}>
             <R.Write src={write} />

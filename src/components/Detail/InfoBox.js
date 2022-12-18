@@ -3,11 +3,10 @@ import React from 'react';
 import mainimg from '../../assets/Detail/DetailMainImg.svg';
 import { useNavigate } from 'react-router-dom';
 import back from '../../assets/Navigate/Back.svg';
-import DetailHeader from '../../components/Detail/DetailHeader';
+import DetailHeader from './DetailHeader';
 
 const InfoBox = ({ rest, id }) => {
   const Nav = useNavigate();
-
   return (
     <>
       <MainImage>
@@ -17,7 +16,6 @@ const InfoBox = ({ rest, id }) => {
           }
         />
       </MainImage>
-
       <BackButton onClick={() => Nav('/list')}>
         <Back src={back} />
       </BackButton>
@@ -28,15 +26,6 @@ const InfoBox = ({ rest, id }) => {
 };
 
 export default React.memo(InfoBox);
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-`;
 
 const MainImage = styled.div`
   width: 100%;
@@ -53,12 +42,13 @@ const MainImg = styled.img`
 `;
 
 const BackButton = styled.div`
-  position: absolute;
+  position: fixed;
+  z-index: 100;
   width: 40px;
   height: 40px;
   left: 15px;
   top: 15px;
-  background: #ffffff;
+  background-color: #ffffff;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   display: flex;
