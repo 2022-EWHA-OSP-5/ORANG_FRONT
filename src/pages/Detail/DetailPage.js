@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 import { React, useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import DetailHeader from '../../components/Detail/DetailHeader';
 import DetailInfo from '../../components/Detail/DetailInfo';
 import DetailMenu from '../../components/Detail/DetailMenu';
 import DetailReview from '../../components/Detail/DetailReview';
 import BottomMenu from '../../components/Detail/BottomMenu';
-import mainimg from '../../assets/Detail/DetailMainImg.svg';
-import back from '../../assets/Navigate/Back.svg';
-
-import InfoBox from './test';
+import InfoBox from '../../components/Detail/InfoBox';
 
 const DetailPage = () => {
   let { id } = useParams();
@@ -20,8 +16,6 @@ const DetailPage = () => {
     review: false,
     info: false,
   });
-
-  const TabString = ['메뉴', '리뷰', '정보'];
   const [rest, setRest] = useState({});
 
   useEffect(() => {
@@ -41,22 +35,6 @@ const DetailPage = () => {
     <>
       <Wrapper>
         <InfoBox rest={rest} id={id} />
-        {/* <MainImage>
-          <MainImg
-            src={
-              rest.image === ''
-                ? mainimg
-                : `http://127.0.0.1:5000/${rest.image}`
-            }
-          />
-        </MainImage>
-
-        <BackButton onClick={() => Nav('/list')}>
-          <Back src={back} />
-        </BackButton>
-        <DetailHeader rId={id} />
-        <Divider /> */}
-
         <TabContainer>
           <Tab
             style={{
@@ -128,47 +106,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-`;
-
-const MainImage = styled.div`
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-`;
-
-const MainImg = styled.img`
-  width: 100%;
-  height: 270px;
-  object-fit: cover;
-  -webkit-user-drag: none;
-`;
-
-const BackButton = styled.div`
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  left: 15px;
-  top: 15px;
-  background: #ffffff;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Back = styled.img`
-  margin-left: 12px;
-  margin-right: 16px;
-  width: 12px;
-  height: 20px;
-`;
-
-const Divider = styled.div`
-  background-color: var(--gray);
-  width: 100%;
-  height: 10px;
 `;
 
 const TabContainer = styled.div`

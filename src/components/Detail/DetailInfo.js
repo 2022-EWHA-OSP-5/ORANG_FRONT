@@ -12,7 +12,7 @@ const DetailInfo = ({ rId }) => {
         },
       })
       .then(res => {
-        console.log(res.data.data);
+        //console.log(res.data.data);
         setRest(res.data.data[0]);
       })
       .catch(err => console.log(err));
